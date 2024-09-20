@@ -1,12 +1,13 @@
 // CSS
 import './App.css'
 
+// Modules
+import Router from './utils/router'
+
 function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
+      <Router />
     </>
   )
 }
