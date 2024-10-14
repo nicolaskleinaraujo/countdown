@@ -2,6 +2,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { Link } from "react-router-dom" 
 
 const Home = () => {
     return (
@@ -29,7 +30,9 @@ const Home = () => {
 
                 <div className="flex flex-row justify-center">
                     <Button className="mr-2">Novo evento</Button>
-                    <Button>Editar eventos</Button>
+                    <Button asChild>
+                        <Link to={"/edit"}>Editar eventos</Link>
+                    </Button>
                 </div>
             </div>
         </div>
