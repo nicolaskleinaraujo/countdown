@@ -6,26 +6,31 @@ import { Button } from "@/components/ui/button"
 const Home = () => {
     return (
         <div className="flex flex-col justify-center items-center">
-            <div className="w-3/6 bg-bgcolor">
-                <h1 className="text-center m-10">NOSSO temporizador de eventos importantes!</h1>
-                <Avatar>
-                    <AvatarImage src="https://github.com/shadcn.png" />
-                    <AvatarFallback>Foto Casal</AvatarFallback>
+            <div className="bg-bgcolor p-10">
+                <h1 className="text-center mb-10 text-textcolor">NOSSO temporizador de eventos importantes!!</h1>
+
+                <Avatar className="mb-10 mx-auto w-44 h-44">
+                    <AvatarImage src="https://github.com/nicolaskleinaraujo.png" />
+                    <AvatarFallback>Foto</AvatarFallback>
                 </Avatar>
-                <Card>
+
+                <Card className="bg-bgcolor mb-10 text-center">
                     <CardHeader>
-                        <CardTitle>Viagem para Terra do Nunca</CardTitle>
+                        <CardTitle className="text-textcolor">Viagem para Terra do Nunca</CardTitle>
                     </CardHeader>
-                    <CardContent>
-                        <p>Faltam XX dias</p>
-                        <p>XX dias ja foram esperados</p>
+                    <CardContent className="">
+                        <p className="text-textcolor">Faltam XX dias</p>
+                        <p className="text-textcolor">XX dias ja foram esperados</p>
                     </CardContent>
-                    <CardFooter>
-                        <p>19/09/24 - 16/01/25</p>
+                    <CardFooter className="justify-center">
+                        <p className="text-textcolor">19/09/24 - 16/01/25</p>
                     </CardFooter>
                 </Card>
-                <Button>Novo evento</Button>
-                <Button>Editar eventos</Button>
+
+                <div className="flex flex-row justify-center">
+                    <Button className="mr-10">Novo evento</Button>
+                    <Button>Editar eventos</Button>
+                </div>
             </div>
         </div>
     )
