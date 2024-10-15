@@ -1,8 +1,9 @@
 // Components
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Link } from "react-router-dom" 
+import { Link } from "react-router-dom"
 
 const Edit = () => {
     return (
@@ -10,10 +11,19 @@ const Edit = () => {
             <div className="bg-bgcolor p-10">
                 <h1 className="text-center mb-10 text-textcolor">Editar Página</h1>
 
-                <Avatar className="mb-10 mx-auto w-44 h-44">
-                    <AvatarImage src="https://github.com/nicolaskleinaraujo.png" />
-                    <AvatarFallback>Foto</AvatarFallback>
-                </Avatar>
+                <div className="group">
+                    <Avatar className="mb-10 mx-auto w-44 h-44">
+                        <AvatarImage 
+                            src="https://github.com/nicolaskleinaraujo.png" 
+                            className="group-hover:blur-md ease-in-out duration-100" 
+                        />
+                        <AvatarFallback>Foto</AvatarFallback>
+
+                        <span className="absolute inset-0 flex items-center justify-center">
+                            <Input type="file" />
+                        </span>
+                    </Avatar>
+                </div>
 
                 <Card className="bg-bgcolor mb-10 text-center">
                     <CardHeader>
