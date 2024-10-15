@@ -1,9 +1,11 @@
-// Modules
+// Components
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Link } from "react-router-dom" 
 import NewEvent from "@/components/NewEvent"
+
+// Modules
+import { Link } from "react-router-dom" 
 
 const Home = () => {
     return (
@@ -30,7 +32,7 @@ const Home = () => {
                 </Card>
 
                 <div className="flex flex-row justify-center">
-                    <NewEvent type={"new"} />
+                    <NewEvent />
 
                     <Button asChild>
                         <Link to={"/edit"}>Editar página</Link>

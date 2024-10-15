@@ -15,11 +15,11 @@ import {
 // Modules
 import { useState } from "react"
 
-const NewEvent = () => {
+const EditEvent = () => {
     const [title, setTitle] = useState("")
     const [date, setDate] = useState(Date)
 
-    const handleCreate = () => {
+    const handleEdit = () => {
         console.log(title, date)
     }
 
@@ -27,20 +27,20 @@ const NewEvent = () => {
         <div>
             <Dialog>
                 <DialogTrigger asChild>
-                    <Button className="mr-2">Novo evento</Button>
+                    <Button className="mr-2">Editar</Button>
                 </DialogTrigger>
 
                 <DialogContent className="max-w-md">
                     <DialogHeader>
-                        <DialogTitle>Novo evento</DialogTitle>
-                        <DialogDescription>Digite as informações do novo evento</DialogDescription>
+                        <DialogTitle>Editar evento</DialogTitle>
+                        <DialogDescription>Edite as informações do evento</DialogDescription>
                     </DialogHeader>
 
                     <Input type="text" placeholder="Titulo" onChange={(e) => setTitle(e.target.value)} />
                     <DatePicker date={date} setDate={setDate} />
 
                     <DialogFooter>
-                        <Button onClick={handleCreate}>Criar</Button>
+                        <Button onClick={handleEdit}>Editar</Button>
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
@@ -48,4 +48,4 @@ const NewEvent = () => {
     )
 }
 
-export default NewEvent
+export default EditEvent

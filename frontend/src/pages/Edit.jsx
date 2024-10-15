@@ -5,11 +5,11 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Pencil } from "lucide-react"
+import ConfirmDelete from "@/components/ConfirmDelete"
+import EditEvent from "@/components/EditEvent"
 
 // Modules
 import { Link } from "react-router-dom"
-import NewEvent from "@/components/NewEvent"
-import ConfirmDelete from "@/components/ConfirmDelete"
 
 const Edit = () => {
     const deleteEvent = () => {
@@ -49,7 +49,7 @@ const Edit = () => {
                     </CardFooter>
 
                     <div className="flex flex-row justify-center mb-6">
-                        <NewEvent />
+                        <EditEvent />
                         <ConfirmDelete deleteFunc={deleteEvent} />
                     </div>
                 </Card>
