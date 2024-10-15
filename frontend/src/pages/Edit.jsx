@@ -8,8 +8,14 @@ import { Pencil } from "lucide-react"
 
 // Modules
 import { Link } from "react-router-dom"
+import NewEvent from "@/components/NewEvent"
+import ConfirmDelete from "@/components/ConfirmDelete"
 
 const Edit = () => {
+    const deleteEvent = () => {
+        console.log("deletado")
+    }
+
     return (
         <div className="flex flex-col justify-center items-center">
             <div className="bg-bgcolor p-10">
@@ -42,8 +48,10 @@ const Edit = () => {
                         <p className="text-textcolor">19/09/24 - 16/01/25</p>
                     </CardFooter>
 
-                    <Button className="mr-6 mb-6">Editar</Button>
-                    <Button variant="destructive">Excluir</Button>
+                    <div className="flex flex-row justify-center mb-6">
+                        <NewEvent />
+                        <ConfirmDelete deleteFunc={deleteEvent} />
+                    </div>
                 </Card>
 
                 <div className="flex flex-row justify-center">

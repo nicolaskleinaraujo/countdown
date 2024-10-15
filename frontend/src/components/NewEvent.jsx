@@ -35,7 +35,7 @@ const NewEvent = ({ type }) => {
                 <DialogContent className="max-w-md">
                     <DialogHeader>
                         <DialogTitle>
-                            { type === "new" ? "Novo evento" : "Editar" }
+                            { type === "new" ? "Novo evento" : "Editar evento" }
                         </DialogTitle>
 
                         <DialogDescription>
