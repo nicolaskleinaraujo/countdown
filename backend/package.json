@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./dist/server.js",
     "build": "tsc",
-    "dev": "tsc && node ./dist/server.js"
+    "dev": "ts-node-dev --respawn --transpile-only --quiet ./src/server.ts"
   },
   "author": "",
   "license": "MIT",
@@ -13,6 +13,7 @@
   "devDependencies": {
     "@types/express": "^5.0.0",
     "@types/node": "^22.7.5",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.6.3"
   },
   "dependencies": {
