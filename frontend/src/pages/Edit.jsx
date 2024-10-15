@@ -3,6 +3,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { Label } from "@/components/ui/label"
+import { Pencil } from "lucide-react"
+
+// Modules
 import { Link } from "react-router-dom"
 
 const Edit = () => {
@@ -19,8 +23,9 @@ const Edit = () => {
                         />
                         <AvatarFallback>Foto</AvatarFallback>
 
-                        <span className="absolute inset-0 flex items-center justify-center">
-                            <Input type="file" />
+                        <span className="flex opacity-0 absolute inset-0 group-hover:opacity-100 items-center justify-center ease-in-out duration-100">
+                            <Label htmlFor="picture"><Pencil /></Label>
+                            <Input id="picture" type="file" className="hidden" />
                         </span>
                     </Avatar>
                 </div>
