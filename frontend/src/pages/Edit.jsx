@@ -41,6 +41,9 @@ const Edit = () => {
                     <CardFooter className="justify-center">
                         <p className="text-textcolor">19/09/24 - 16/01/25</p>
                     </CardFooter>
+
+                    <Button className="mr-6 mb-6">Editar</Button>
+                    <Button variant="destructive">Excluir</Button>
                 </Card>
 
                 <div className="flex flex-row justify-center">

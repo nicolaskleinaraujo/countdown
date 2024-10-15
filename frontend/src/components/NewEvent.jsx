@@ -15,7 +15,7 @@ import {
 // Modules
 import { useState } from "react"
 
-const NewEvent = () => {
+const NewEvent = ({ type }) => {
     const [title, setTitle] = useState("")
     const [date, setDate] = useState(Date)
 
@@ -27,13 +27,20 @@ const NewEvent = () => {
         <div>
             <Dialog>
                 <DialogTrigger asChild>
-                    <Button className="mr-2">Novo evento</Button>
+                    <Button className="mr-2">
+                        { type === "new" ? "Novo evento" : "Editar" }
+                    </Button>
                 </DialogTrigger>
 
                 <DialogContent className="max-w-md">
                     <DialogHeader>
-                        <DialogTitle>Novo evento</DialogTitle>
-                        <DialogDescription>Digite as informações do novo evento</DialogDescription>
+                        <DialogTitle>
+                            { type === "new" ? "Novo evento" : "Editar" }
+                        </DialogTitle>
+
+                        <DialogDescription>
+                            { type === "new" ? "Digite as informações do novo evento" : "Edite as informações do evento" }
+                        </DialogDescription>
                     </DialogHeader>
 
                     <Input type="text" placeholder="Titulo" onChange={(e) => setTitle(e.target.value)} />
