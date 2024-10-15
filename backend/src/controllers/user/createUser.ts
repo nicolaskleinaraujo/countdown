@@ -6,7 +6,7 @@ interface User {
     password: String,
 }
 
-const createUser = async(req:Request, res:Response) => {
+export const createUser = async(req:Request, res:Response) => {
     const { email, password }:User = req.body
 
     console.log(email, password)
