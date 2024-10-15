@@ -14,9 +14,7 @@ import { format } from "date-fns"
 import { ptBR } from "date-fns/locale/pt-BR"
 import { cn } from "@/lib/utils"
 
-const DatePicker = () => {
-    const [date, setDate] = useState(Date)
-
+const DatePicker = ({ date, setDate }) => {
     return (
         <Popover>
             <PopoverTrigger asChild>
