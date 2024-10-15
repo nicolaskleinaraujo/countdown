@@ -33,7 +33,7 @@ const Home = () => {
                     <NewEvent />
 
                     <Button asChild>
-                        <Link to={"/"}>Editar eventos</Link>
+                        <Link to={"/edit"}>Editar eventos</Link>
                     </Button>
                 </div>
             </div>
