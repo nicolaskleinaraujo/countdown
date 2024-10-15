@@ -20,7 +20,7 @@ const Home = () => {
                     <CardHeader>
                         <CardTitle className="text-textcolor">Viagem para Terra do Nunca</CardTitle>
                     </CardHeader>
-                    <CardContent className="">
+                    <CardContent className="p-0 mb-6">
                         <p className="text-textcolor">Faltam XX dias</p>
                         <p className="text-textcolor">XX dias ja foram esperados</p>
                     </CardContent>
