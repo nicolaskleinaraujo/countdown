@@ -16,10 +16,11 @@ import {
 import { useState } from "react"
 
 const NewEvent = () => {
+    const [title, setTitle] = useState("")
     const [date, setDate] = useState(Date)
 
     const handleCreate = () => {
-        console.log(date)
+        console.log(title, date)
     }
 
     return (
@@ -35,7 +36,7 @@ const NewEvent = () => {
                         <DialogDescription>Digite as informações do novo evento</DialogDescription>
                     </DialogHeader>
 
-                    <Input type="text" placeholder="Titulo" />
+                    <Input type="text" placeholder="Titulo" onChange={(e) => setTitle(e.target.value)} />
                     <DatePicker date={date} setDate={setDate} />
 
                     <DialogFooter>
