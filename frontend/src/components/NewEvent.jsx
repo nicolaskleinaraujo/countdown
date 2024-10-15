@@ -13,7 +13,9 @@ const NewEvent = () => {
     return (
         <div>
             <Dialog>
-                <DialogTrigger>Novo evento</DialogTrigger>
+                <DialogTrigger asChild>
+                    <Button className="mr-2">Novo evento</Button>
+                </DialogTrigger>
 
                 <DialogContent>
                     <DialogHeader>

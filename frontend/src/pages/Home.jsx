@@ -30,14 +30,11 @@ const Home = () => {
                 </Card>
 
                 <div className="flex flex-row justify-center">
-                    <Button className="mr-2">Novo evento</Button>
+                    <NewEvent />
+
                     <Button asChild>
                         <Link to={"/"}>Editar eventos</Link>
                     </Button>
-                </div>
-
-                <div className="bg-white">
-                    <NewEvent />
                 </div>
             </div>
         </div>
