@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dialog"
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
+import DatePicker from "./DatePicker"
 
 const NewEvent = () => {
     return (
@@ -23,6 +24,7 @@ const NewEvent = () => {
                     </DialogHeader>
 
                     <Input type="text" placeholder="Titulo" />
+                    <DatePicker />
 
                     <DialogFooter>
                         <Button>Criar</Button>
