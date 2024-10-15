@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label"
 import { Pencil } from "lucide-react"
 import ConfirmDelete from "@/components/ConfirmDelete"
 import EditEvent from "@/components/EditEvent"
+import EditTitle from "@/components/EditTitle"
 
 // Modules
 import { Link } from "react-router-dom"
@@ -19,22 +20,21 @@ const Edit = () => {
     return (
         <div className="flex flex-col justify-center items-center">
             <div className="bg-bgcolor p-10">
-                <h1 className="text-center mb-10 text-textcolor">Editar Página</h1>
+                <h1 className="text-center text-textcolor">NOSSO temporizador de eventos importantes!!</h1>
+                <EditTitle />
 
-                <div className="group">
-                    <Avatar className="mb-10 mx-auto w-44 h-44">
-                        <AvatarImage 
-                            src="https://github.com/nicolaskleinaraujo.png" 
-                            className="group-hover:blur-md ease-in-out duration-100" 
-                        />
-                        <AvatarFallback>Foto</AvatarFallback>
+                <Avatar className="group mb-10 mx-auto w-44 h-44">
+                    <AvatarImage 
+                        src="https://github.com/nicolaskleinaraujo.png" 
+                        className="group-hover:blur-md ease-in-out duration-100" 
+                    />
+                    <AvatarFallback>Foto</AvatarFallback>
 
-                        <span className="flex opacity-0 absolute inset-0 group-hover:opacity-100 items-center justify-center ease-in-out duration-100">
-                            <Label htmlFor="picture"><Pencil /></Label>
-                            <Input id="picture" type="file" className="hidden" />
-                        </span>
-                    </Avatar>
-                </div>
+                    <span className="flex opacity-0 absolute inset-0 group-hover:opacity-100 items-center justify-center ease-in-out duration-100">
+                        <Label htmlFor="picture"><Pencil /></Label>
+                        <Input id="picture" type="file" className="hidden" />
+                    </span>
+                </Avatar>
 
                 <Card className="bg-bgcolor mb-10 text-center">
                     <CardHeader>
