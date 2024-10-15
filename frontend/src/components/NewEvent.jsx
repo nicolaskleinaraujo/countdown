@@ -6,8 +6,8 @@ import {
     DialogTrigger,
     DialogFooter,
 } from "@/components/ui/dialog"
-
 import { Button } from "./ui/button"
+import { Input } from "./ui/input"
 
 const NewEvent = () => {
     return (
@@ -21,6 +21,8 @@ const NewEvent = () => {
                     <DialogHeader>
                         <DialogTitle>Novo evento</DialogTitle>
                     </DialogHeader>
+
+                    <Input type="text" placeholder="Titulo" />
 
                     <DialogFooter>
                         <Button>Criar</Button>
