@@ -17,12 +17,13 @@ model User {
 }
 
 model Pages {
-  id       Int    @id @default(autoincrement())
-  title    String
-  imagesId Int    @unique
+  id      Int      @id @default(autoincrement())
+  title   String
+  imageId Int      @unique
+  Events  Events[]
 
   users User[]
-  image Images @relation(fields: [imagesId], references: [id])
+  image Images @relation(fields: [imageId], references: [id])
 }
 
 model Images {
@@ -30,4 +31,14 @@ model Images {
   filename String
   content  Bytes
   page     Pages?
+}
+
+model Events {
+  id         Int      @id @default(autoincrement())
+  title      String
+  created_at DateTime
+  starts_at  DateTime
+  pageId     Int
+
+  page Pages @relation(fields: [pageId], references: [id])
 }
