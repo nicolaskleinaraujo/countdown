@@ -49,6 +49,7 @@ export const updateUser = async(req: Request, res: Response): Promise<void> => {
                 nickname,
             }, 
         })
+        updatedUser.password = ""
 
         res.status(201).json({ msg: "Usuario atualizado com sucesso", updatedUser })
     } catch (error) {
