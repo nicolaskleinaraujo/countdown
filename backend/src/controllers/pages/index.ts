@@ -4,6 +4,7 @@ import { createPage } from "./createPage"
 import { deleteEvent } from "./deleteEvent"
 import { updateEvent } from "./updateEvent"
 import { updatePageImage } from "./updatePageImage"
+import { updatePageTitle } from "./updatePageTitle"
 
 export const pageController = {
     createPage,
@@ -11,4 +12,5 @@ export const pageController = {
     deleteEvent,
     updateEvent,
     updatePageImage,
+    updatePageTitle,
 }
