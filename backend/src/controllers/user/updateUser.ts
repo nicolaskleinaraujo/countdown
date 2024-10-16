@@ -21,11 +21,6 @@ export const updateUser = async(req: Request, res: Response): Promise<void> => {
         const { oldPassword, password, nickname }: Infos = InfosSchema.parse(req.body)
         const userId: string | string[] | undefined = req.headers.userid
 
-        if (userId === undefined) {
-            res.status(401).json({ msg: "Informações insuficientes" })
-            return
-        }
-
         const user = await prisma.user.findUnique({ where: { id: Number(userId) } })
         if (!user) {
             res.status(404).json({ msg: "Usuario não encontrado" })
