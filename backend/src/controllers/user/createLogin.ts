@@ -1,42 +1,37 @@
-import { prisma } from "../../db/client"
 import { Request, Response } from "express"
+import { prisma } from "../../db/client"
 import { z } from "zod"
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 
-interface User {
+interface Infos {
     email: string,
     password: string,
 }
 
-const UserSchema = z.object({
+const InfosSchema = z.object({
     email: z.string().email().trim().max(150),
     password: z.string().trim().min(5).max(150),
 })
 
-export const createUser = async(req: Request, res: Response): Promise<void> => {
+export const createLogin = async(req: Request, res: Response): Promise<void> => {
     try {
-        const { email, password }: User = UserSchema.parse(req.body)
+        const { email, password }: Infos = InfosSchema.parse(req.body)
 
-        const emailExists = await prisma.user.findUnique({ where: { email } })
-        if (emailExists) {
-            res.status(400).json({ msg: "Email já cadastrado" })
+        const user = await prisma.user.findUnique({ where: { email } })
+        if (!user) {
+            res.status(404).json({ msg: "Usuario não encontrado" })
             return
         }
 
-        // Creates the hashed password
-        const salt = await bcrypt.genSalt(10)
-        const hash = bcrypt.hashSync(password, salt)
-
-        const user = await prisma.user.create({
-            data: {
-                email,
-                password: hash,
-            }
-        })
+        const checkPassword: boolean = await bcrypt.compare(password, user.password)
+        if (!checkPassword) {
+            res.status(400).json({ msg: "Senha incorreta" })
+            return
+        }
         user.password = ""
 
-        // Creating the access and refresh JWT Token
+        // Creating the access and refresh token
         const accessToken: string = jwt.sign({ id: user.id }, process.env.JWT_SECRET as string, { expiresIn: "1h" })
         const refreshToken: string = jwt.sign({ id: user.id }, process.env.JWT_SECRET as string, { expiresIn: "60d" })
 
@@ -56,7 +51,7 @@ export const createUser = async(req: Request, res: Response): Promise<void> => {
             maxAge: 60 * 24 * 60 * 60 * 1000,
         })
 
-        res.status(201).json({ user, msg: "Usuario criado com sucesso" })
+        res.status(200).json({ user, msg: "Login feito com sucesso" })
     } catch (error) {
         if (error instanceof z.ZodError) {
             const fields = error.issues.flatMap(issue => issue.path.map(path => path))

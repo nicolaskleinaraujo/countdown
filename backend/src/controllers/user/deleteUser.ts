@@ -23,7 +23,7 @@ export const deleteUser = async(req: Request, res:Response): Promise<void> => {
             return
         }
 
-        const checkPassword = await bcrypt.compare(password, user.password)
+        const checkPassword: boolean = await bcrypt.compare(password, user.password)
         if (!checkPassword) {
             res.status(400).json({ msg: "Senha incorreta" })
             return
