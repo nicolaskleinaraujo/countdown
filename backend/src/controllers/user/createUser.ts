@@ -1,7 +1,8 @@
 import { prisma } from "../../db/client"
 import { Request, Response } from "express"
-import { string, z } from "zod"
+import { z } from "zod"
 import bcrypt from "bcryptjs"
+import jwt from "jsonwebtoken"
 
 interface User {
     email: string,
@@ -33,7 +34,27 @@ export const createUser = async(req: Request, res: Response): Promise<void> => {
             }
         })
 
-        res.status(200).json({ user, msg: "Usuario criado com sucesso" })
+        // Creating the access and refresh JWT Token
+        const accessToken = jwt.sign({ id: user.id }, process.env.JWT_SECRET as string, { expiresIn: "1h" })
+        const refreshToken = jwt.sign({ id: user.id }, process.env.JWT_SECRET as string, { expiresIn: "60d" })
+
+        res.cookie("access", accessToken, {
+            httpOnly: true,
+            signed: true,
+            secure: true,
+            sameSite: "none",
+            maxAge: 1 * 60 * 60 * 1000,
+        })
+
+        res.cookie("refresh", refreshToken, {
+            httpOnly: true,
+            signed: true,
+            secure: true,
+            sameSite: "none",
+            maxAge: 60 * 24 * 60 * 60 * 1000,
+        })
+
+        res.status(201).json({ user, msg: "Usuario criado com sucesso" })
     } catch (error) {
         if (error instanceof z.ZodError) {
             const fields = error.issues.flatMap(issue => issue.path.map(path => path))
@@ -42,6 +63,6 @@ export const createUser = async(req: Request, res: Response): Promise<void> => {
         }
 
         res.status(500).json({ msg: "Erro interno, tente novamente" })
-    }
+    }   
 
 }
