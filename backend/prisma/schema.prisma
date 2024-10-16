@@ -36,7 +36,7 @@ model Images {
 model Events {
   id         Int      @id @default(autoincrement())
   title      String
-  created_at DateTime
+  created_at DateTime @default(now())
   starts_at  DateTime
   pageId     Int
 

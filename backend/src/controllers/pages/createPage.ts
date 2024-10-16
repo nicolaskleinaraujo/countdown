@@ -41,7 +41,6 @@ export const createPage = async(req: Request, res: Response): Promise<void> => {
         res.status(201).json({ msg: "Page criada com sucesso", page })
     } catch (error) {
         if (error instanceof z.ZodError) {
-            console.log(req)
             const fields = error.issues.flatMap(issue => issue.path.map(path => path))
             res.status(400).json(fields)
             return
