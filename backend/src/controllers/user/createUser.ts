@@ -35,8 +35,8 @@ export const createUser = async(req: Request, res: Response): Promise<void> => {
         })
 
         // Creating the access and refresh JWT Token
-        const accessToken = jwt.sign({ id: user.id }, process.env.JWT_SECRET as string, { expiresIn: "1h" })
-        const refreshToken = jwt.sign({ id: user.id }, process.env.JWT_SECRET as string, { expiresIn: "60d" })
+        const accessToken: string = jwt.sign({ id: user.id }, process.env.JWT_SECRET as string, { expiresIn: "1h" })
+        const refreshToken: string = jwt.sign({ id: user.id }, process.env.JWT_SECRET as string, { expiresIn: "60d" })
 
         res.cookie("access", accessToken, {
             httpOnly: true,
@@ -63,6 +63,5 @@ export const createUser = async(req: Request, res: Response): Promise<void> => {
         }
 
         res.status(500).json({ msg: "Erro interno, tente novamente" })
-    }   
-
+    }
 }

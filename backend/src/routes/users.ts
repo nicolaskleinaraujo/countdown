@@ -1,9 +1,9 @@
 // Modules
-import express, { Request, Response } from "express"
+import express, { Request, Response, IRouter } from "express"
 import { userController } from "../controllers/user"
+const usersRouter: IRouter = express.Router()
 
-const usersRouter = express.Router()
-
+// Routes
 usersRouter.route("/").post((req:Request, res:Response) => userController.createUser(req, res))
 
 export default usersRouter
