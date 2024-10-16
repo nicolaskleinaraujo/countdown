@@ -1,0 +1,44 @@
+import { prisma } from "../../db/client"
+import { Request, Response } from "express"
+import { z } from "zod"
+
+interface Infos {
+    image: Express.Multer.File,
+    id: number
+}
+
+const InfosSchema = z.object({
+    image: z.custom<Express.Multer.File>(),
+    id: z.number()
+})
+
+export const updatePageImage = async(req: Request, res: Response): Promise<void> => {
+    try {
+        const { image, id }: Infos = InfosSchema.parse({
+            image: req.file,
+            id: req.body.id
+        })
+    
+        const updatedPage = await prisma.pages.update({
+            where: { id },
+            data: {
+                image: {
+                    update: {
+                        content: image.buffer,
+                        filename: image.originalname + Date.now()
+                    }
+                }
+            }
+        })
+
+        res.status(200).json({ msg: "Pagina atualizada com sucesso", updatedPage })
+    } catch (error) {
+        if (error instanceof z.ZodError) {
+            const fields = error.issues.flatMap(issue => issue.path.map(path => path))
+            res.status(400).json(fields)
+            return
+        }
+
+        res.status(500).json({ msg: "Erro interno, tente novamente", error })
+    }
+}
