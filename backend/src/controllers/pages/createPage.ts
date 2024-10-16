@@ -1,8 +1,6 @@
 import { prisma } from "../../db/client"
 import { Request, Response } from "express"
 import { z } from "zod"
-import bcrypt from "bcryptjs"
-import jwt from "jsonwebtoken"
 
 interface Page {
     title: string,
@@ -20,8 +18,30 @@ export const createPage = async(req: Request, res: Response): Promise<void> => {
             title: req.body.title,
             image: req.file,
         })
+
+        const userId: string | string[] | undefined = req.headers.userid
+        if (userId === undefined) {
+            res.status(401).json({ msg: "Informações insuficientes" })
+            return
+        }
+
+        const page = await prisma.pages.create({
+            data: {
+                title,
+                image: {
+                    create: {
+                        content: image.buffer,
+                        filename: image.originalname + Date.now()
+                    }
+                },
+                users: { connect: { id: Number(userId) } },
+            },
+        })
+
+        res.status(201).json({ msg: "Page criada com sucesso", page })
     } catch (error) {
         if (error instanceof z.ZodError) {
+            console.log(req)
             const fields = error.issues.flatMap(issue => issue.path.map(path => path))
             res.status(400).json(fields)
             return

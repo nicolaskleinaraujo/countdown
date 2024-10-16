@@ -1,3 +1,6 @@
-export const pageController {
-    
+// Controllers
+import { createPage } from "./createPage"
+
+export const pageController = {
+    createPage,
 }
