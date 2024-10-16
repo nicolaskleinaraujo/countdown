@@ -18,7 +18,7 @@ export const createEvent = async(req: Request, res: Response): Promise<void> => 
     try {
         const { title, starts_at, pageId }: Event = EventSchema.parse(req.body)
 
-        const event = prisma.events.create({
+        const event = await prisma.events.create({
             data: {
                 title,
                 starts_at,
