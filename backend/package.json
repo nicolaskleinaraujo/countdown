@@ -5,12 +5,13 @@
   "scripts": {
     "start": "node ./dist/server.js",
     "build": "tsc",
-    "dev": "ts-node-dev --respawn --transpile-only --quiet --cls ./src/server.ts"
+    "dev": "ts-node-dev --respawn --transpile-only --cls ./src/server.ts"
   },
   "author": "",
   "license": "MIT",
   "description": "",
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/express": "^5.0.0",
     "@types/node": "^22.7.5",
     "prisma": "^5.21.0",
@@ -19,6 +20,7 @@
   },
   "dependencies": {
     "@prisma/client": "^5.21.0",
+    "bcryptjs": "^2.4.3",
     "express": "^4.21.1",
     "zod": "^3.23.8"
   }

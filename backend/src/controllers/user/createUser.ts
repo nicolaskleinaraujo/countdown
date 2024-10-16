@@ -1,6 +1,7 @@
 import { prisma } from "../../db/client"
 import { Request, Response } from "express"
-import { z } from "zod"
+import { string, z } from "zod"
+import bcrypt from "bcryptjs"
 
 interface User {
     email: string,
@@ -8,8 +9,8 @@ interface User {
 }
 
 const UserSchema = z.object({
-    email: z.string().email().max(150).trim(),
-    password: z.string().max(150).trim().min(5),
+    email: z.string().email().trim().max(150),
+    password: z.string().trim().min(5).max(150),
 })
 
 export const createUser = async(req: Request, res: Response): Promise<void> => {
@@ -22,7 +23,17 @@ export const createUser = async(req: Request, res: Response): Promise<void> => {
             return
         }
 
-        res.status(200).json({ msg: "Usuario criado com sucesso" })
+        const salt = await bcrypt.genSalt(10)
+        const hash = bcrypt.hashSync(password, salt)
+
+        const user = await prisma.user.create({
+            data: {
+                email,
+                password: hash,
+            }
+        })
+
+        res.status(200).json({ user, msg: "Usuario criado com sucesso" })
     } catch (error) {
         if (error instanceof z.ZodError) {
             const fields = error.issues.flatMap(issue => issue.path.map(path => path))
