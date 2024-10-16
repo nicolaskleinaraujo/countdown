@@ -4,12 +4,12 @@ import { z } from "zod"
 
 interface Infos {
     image: Express.Multer.File,
-    id: number
+    id: string
 }
 
 const InfosSchema = z.object({
     image: z.custom<Express.Multer.File>(),
-    id: z.number()
+    id: z.string()
 })
 
 export const updatePageImage = async(req: Request, res: Response): Promise<void> => {
@@ -20,7 +20,7 @@ export const updatePageImage = async(req: Request, res: Response): Promise<void>
         })
     
         const updatedPage = await prisma.pages.update({
-            where: { id },
+            where: { id: Number(id) },
             data: {
                 image: {
                     update: {

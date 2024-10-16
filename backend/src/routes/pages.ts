@@ -12,5 +12,6 @@ pagesRouter.route("/").post(validateToken, upload.single("image"), (req: Request
 pagesRouter.route("/event").post(validateToken, (req: Request, res: Response) => pageController.createEvent(req, res))
 pagesRouter.route("/event").delete(validateToken, (req: Request, res: Response) => pageController.deleteEvent(req, res))
 pagesRouter.route("/event").patch(validateToken, (req: Request, res: Response) => pageController.updateEvent(req, res))
+pagesRouter.route("/image").patch(validateToken, upload.single("image"), (req: Request, res: Response) => pageController.updatePageImage(req, res))
 
 export default pagesRouter
