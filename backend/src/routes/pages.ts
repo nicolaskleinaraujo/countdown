@@ -11,5 +11,6 @@ const upload: Multer = multer()
 pagesRouter.route("/").post(validateToken, upload.single("image"), (req: Request, res: Response) => pageController.createPage(req, res))
 pagesRouter.route("/event").post(validateToken, (req: Request, res: Response) => pageController.createEvent(req, res))
 pagesRouter.route("/event").delete(validateToken, (req: Request, res: Response) => pageController.deleteEvent(req, res))
+pagesRouter.route("/event").patch(validateToken, (req: Request, res: Response) => pageController.updateEvent(req, res))
 
 export default pagesRouter
