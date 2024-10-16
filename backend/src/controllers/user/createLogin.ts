@@ -59,6 +59,6 @@ export const createLogin = async(req: Request, res: Response): Promise<void> => 
             return
         }
 
-        res.status(500).json({ msg: "Erro interno, tente novamente" })
+        res.status(500).json({ msg: "Erro interno, tente novamente", error })
     }
 }
