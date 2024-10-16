@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./dist/server.js",
     "build": "tsc",
-    "dev": "ts-node-dev --respawn --transpile-only --quiet ./src/server.ts"
+    "dev": "ts-node-dev --respawn --transpile-only --quiet --cls ./src/server.ts"
   },
   "author": "",
   "license": "MIT",
@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@prisma/client": "^5.21.0",
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "zod": "^3.23.8"
   }
 }

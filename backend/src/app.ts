@@ -1,11 +1,15 @@
 // Modules
-import express, { Request, Response } from "express"
-const app = express()
+import express, { Request, Response, Application } from "express"
+const app: Application = express()
 
-// Routes
+// Routers
 import usersRouter from "./routes/users"
 
-app.get("/", (req:Request, res:Response) => {
+// Configs
+app.use(express.json())
+
+// Routes
+app.get("/", (req: Request, res: Response) => {
     res.send("Bem-vindo a minha API feita em TypeScript")
 })
 app.use("/users", usersRouter)
