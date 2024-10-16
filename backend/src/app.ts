@@ -5,6 +5,7 @@ const app: Application = express()
 
 // Routers
 import usersRouter from "./routes/users"
+import pagesRouter from "./routes/pages"
 
 // Configs
 app.use(express.json())
@@ -12,8 +13,9 @@ app.use(cookieParser(process.env.COOKIE_PARSER_SECRET))
 
 // Routes
 app.get("/", (req: Request, res: Response) => {
-    res.send("Bem-vindo a minha API feita em TypeScript")
+    res.send("Bem-vindo a minha API. Confira o repositorio para mais informações")
 })
 app.use("/users", usersRouter)
+app.use("/pages", pagesRouter)
 
 export default app
