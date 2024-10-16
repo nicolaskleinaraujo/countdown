@@ -9,5 +9,6 @@ const usersRouter: IRouter = express.Router()
 usersRouter.route("/").post((req: Request, res: Response) => userController.createUser(req, res))
 usersRouter.route("/").delete(validateToken, (req: Request, res: Response) => userController.deleteUser(req, res))
 usersRouter.route("/login").post((req: Request, res: Response) => userController.createLogin(req, res))
+usersRouter.route("/tryauth").post((req: Request, res: Response) => userController.tryAuth(req, res))
 
 export default usersRouter

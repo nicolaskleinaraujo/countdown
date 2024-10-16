@@ -61,5 +61,8 @@ export const tryAuth = async(req: Request, res: Response): Promise<void> => {
         })
     }
 
+    // Removes password before sending to client
+    user.password = ""
+
     res.status(200).json({ msg: "Logado com sucesso", user })
 }
