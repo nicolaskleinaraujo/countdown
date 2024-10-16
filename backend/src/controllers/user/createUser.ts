@@ -7,16 +7,18 @@ import jwt from "jsonwebtoken"
 interface User {
     email: string,
     password: string,
+    nickname: string,
 }
 
 const UserSchema = z.object({
     email: z.string().email().trim().max(150),
     password: z.string().trim().min(5).max(150),
+    nickname: z.string().trim().min(3).max(15),
 })
 
 export const createUser = async(req: Request, res: Response): Promise<void> => {
     try {
-        const { email, password }: User = UserSchema.parse(req.body)
+        const { email, password, nickname }: User = UserSchema.parse(req.body)
 
         const emailExists = await prisma.user.findUnique({ where: { email } })
         if (emailExists) {
@@ -32,6 +34,7 @@ export const createUser = async(req: Request, res: Response): Promise<void> => {
             data: {
                 email,
                 password: hash,
+                nickname,
             }
         })
         user.password = ""
@@ -64,6 +67,6 @@ export const createUser = async(req: Request, res: Response): Promise<void> => {
             return
         }
 
-        res.status(500).json({ msg: "Erro interno, tente novamente" })
+        res.status(500).json({ msg: "Erro interno, tente novamente", error })
     }
 }
