@@ -18,7 +18,7 @@ export const updatePageImage = async(req: Request, res: Response): Promise<void>
             image: req.file,
             id: req.body.id
         })
-    
+
         const updatedPage = await prisma.pages.update({
             where: { id: Number(id) },
             data: {
