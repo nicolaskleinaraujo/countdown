@@ -16,12 +16,14 @@ import {
 // Modules
 import { useState, useContext } from "react"
 import { UserContext } from "@/context/UserContext"
+import { toast } from "react-toastify"
 import dbFetch from "@/config/axios"
 
 const NewEvent = ({ pageId }) => {
     const [loading, setLoading] = useState(false)
-    const { userId } = useContext(UserContext)
+    const [isOpen, setIsOpen] = useState(false)
 
+    const { userId, userPages, setUserPages } = useContext(UserContext)
     const [title, setTitle] = useState("")
     const [date, setDate] = useState(Date)
 
@@ -35,15 +37,22 @@ const NewEvent = ({ pageId }) => {
                 pageId: parseInt(pageId),
             }, { headers: { "userId": userId } })
 
-            console.log(res.data)
+            const page = userPages.filter(page => page.id == pageId)[0]
+            page.Events.push(res.data.event)
+
+            setUserPages([userPages.filter(page => page.id != pageId), page])
+
+            toast.success(res.data.msg)
+            setIsOpen(false)
         } catch (error) {
+            toast.error(error.response.data.msg)
             setLoading(false)
         }
     }
 
     return (
         <div>
-            <Dialog>
+            <Dialog open={isOpen} onOpenChange={setIsOpen}>
                 {/* TODO add zod form */}
                 <DialogTrigger asChild>
                     <Button className="mr-2">Novo evento</Button>

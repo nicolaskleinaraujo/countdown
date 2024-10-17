@@ -9,7 +9,7 @@ interface Event {
 }
 
 const EventSchema = z.object({
-    title: z.string().trim().max(150),
+    title: z.string().trim().min(3).max(150),
     starts_at: z.string().datetime().trim(),
     pageId: z.number()
 })
