@@ -1,6 +1,7 @@
 import { prisma } from "../../db/client"
 import { Request, Response } from "express"
 import { z } from "zod"
+import sharp = require("sharp")
 
 interface Page {
     title: string,
@@ -30,7 +31,7 @@ export const createPage = async(req: Request, res: Response): Promise<void> => {
                 title,
                 image: {
                     create: {
-                        content: image.buffer,
+                        content: await sharp(image.buffer).toFormat("webp").toBuffer(),
                         filename: image.originalname + Date.now()
                     }
                 },

@@ -1,6 +1,7 @@
 import { prisma } from "../../db/client"
 import { Request, Response } from "express"
 import { z } from "zod"
+import sharp = require("sharp")
 
 interface Infos {
     image: Express.Multer.File,
@@ -24,7 +25,7 @@ export const updatePageImage = async(req: Request, res: Response): Promise<void>
             data: {
                 image: {
                     update: {
-                        content: image.buffer,
+                        content: await sharp(image.buffer).toFormat("webp").toBuffer(),
                         filename: image.originalname + Date.now()
                     }
                 }
