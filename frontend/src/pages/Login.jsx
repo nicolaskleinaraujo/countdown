@@ -8,10 +8,11 @@ import { ReloadIcon } from "@radix-ui/react-icons"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import dbFetch from "@/config/axios"
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { UserContext } from "@/context/UserContext"
+import { RedirectContext } from "@/context/RedirectContext"
 
 const formSchema = z.object({
     email: z.string().email({ message: "Digite um email válido" }).trim().min(3, { message: "Minimo de 3 caracteres" }).max(150),
@@ -19,8 +20,20 @@ const formSchema = z.object({
 })
 
 const Login = () => {
+    const navigate = useNavigate()
+
     const [loading, setLoading] = useState(false)
+    const [getRedirect, setGetRedirect] = useState("")
+
+    const { redirect, setRedirect } = useContext(RedirectContext)
     const { setUserId, setUserPages } = useContext(UserContext)
+
+    const saveRedirect = () => {
+        if (redirect !== "") {
+            setGetRedirect(redirect)
+            setRedirect("")
+        }
+    }
 
     const handleLogin = async(values) => {
         setLoading(true)
@@ -32,8 +45,10 @@ const Login = () => {
             })
 
             setUserId(res.data.user.id)
+            setUserPages(res.data.user.pages)
 
             setLoading(false)
+            navigate(getRedirect !== "" ? getRedirect : "/")
         } catch (error) {
             console.log(error)
         }
@@ -46,6 +61,10 @@ const Login = () => {
             password: "",
         }
     })
+
+    useEffect(() => {
+        saveRedirect()
+    }, [])
 
     return (
         <div className="flex justify-center items-center flex-col bg-bgcolor h-screen">
