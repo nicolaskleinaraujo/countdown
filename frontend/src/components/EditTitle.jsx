@@ -1,7 +1,7 @@
 // Components
-import DatePicker from "./DatePicker"
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
+import { ReloadIcon } from "@radix-ui/react-icons"
 import {
     Dialog,
     DialogContent,
@@ -13,18 +13,45 @@ import {
 } from "@/components/ui/dialog"
 
 // Modules
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { toast } from "react-toastify"
+import dbFetch from "@/config/axios"
+import { UserContext } from "@/context/UserContext"
 
-const EditTitle = () => {
+const EditTitle = ({ pageId }) => {
+    const [loading, setLoading] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)
+
+    const { userId, userPages, setUserPages } = useContext(UserContext)
     const [title, setTitle] = useState("")
 
-    const handleUpdate = () => {
-        console.log(title)
+    const handleUpdate = async() => {
+        setLoading(true)
+
+        try {
+            const res = await dbFetch.patch("/pages/title", {
+                title,
+                id: parseInt(pageId),
+            }, { headers: { "userId": userId } })
+
+            const page = userPages.filter(page => page.id == pageId)[0]
+            page.title = res.data.updatedPage.title
+
+            setUserPages([userPages.filter(page => page.id != pageId), page])
+
+            toast.success(res.data.msg)
+            setIsOpen(false)
+            setLoading(false)
+        } catch (error) {
+            toast.error(error.response.data.msg)
+            setLoading(false)
+        }
     }
 
     return (
         <div className="flex justify-center">
-            <Dialog>
+            <Dialog open={isOpen} onOpenChange={setIsOpen}>
+                {/* TODO add zod validation */}
                 <DialogTrigger asChild>
                     <Button className="text-textcolor mb-10" variant="link">Editar</Button>
                 </DialogTrigger>
@@ -38,7 +65,7 @@ const EditTitle = () => {
                     <Input type="text" placeholder="Titulo" onChange={(e) => setTitle(e.target.value)} />
 
                     <DialogFooter>
-                        <Button onClick={handleUpdate}>Atualizar</Button>
+                        { !loading ? <Button onClick={handleUpdate}>Atualizar</Button> : <Button disabled><ReloadIcon className="mr-2 h-4 w-4 animate-spin" />Carregando</Button> }
                     </DialogFooter>
                 </DialogContent>
             </Dialog>

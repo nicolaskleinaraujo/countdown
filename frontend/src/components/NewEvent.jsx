@@ -44,6 +44,7 @@ const NewEvent = ({ pageId }) => {
 
             toast.success(res.data.msg)
             setIsOpen(false)
+            setLoading(false)
         } catch (error) {
             toast.error(error.response.data.msg)
             setLoading(false)
