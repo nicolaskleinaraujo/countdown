@@ -3,12 +3,14 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import NewEvent from "@/components/NewEvent"
+import { Skeleton } from "@/components/ui/skeleton"
+import { Share1Icon } from "@radix-ui/react-icons"
 
 // Modules
 import { Link, useParams } from "react-router-dom"
 import { useContext, useEffect, useState } from "react"
 import { UserContext } from "@/context/UserContext"
-import { Skeleton } from "@/components/ui/skeleton"
+import { format, differenceInCalendarDays } from "date-fns"
 
 const Page = () => {
     const { id } = useParams()
@@ -27,9 +29,9 @@ const Page = () => {
 
             setTitle(currentPage.title)
             setImage(`data:image/png;base64,${currentPage.image.content}`)
-            setEvents(currentPage.events)
+            setEvents(currentPage.Events)
 
-            //setLoading(false)
+            setLoading(false)
         }
     }
 
@@ -39,7 +41,7 @@ const Page = () => {
 
     return (
         <div className="flex flex-col justify-center items-center">
-            <div className="bg-bgcolor p-10 w-screen">
+            <div className="bg-bgcolor p-10 w-screen min-h-screen">
                 <h1 className="text-center mb-10 text-textcolor">{!loading ? title : <Skeleton className="h-6 w-56 mx-auto bg-neutral-800" /> }</h1>
 
                 <Avatar className="mb-10 mx-auto w-44 h-44">
@@ -47,35 +49,44 @@ const Page = () => {
                 </Avatar>
 
                 {!loading ? (
-                    <Card className="bg-bgcolor mb-10 text-center">
-                        <CardHeader>
-                            <CardTitle className="text-textcolor">Viagem para Terra do Nunca</CardTitle>
-                        </CardHeader>
-                        <CardContent className="p-0 mb-6">
-                            <p className="text-textcolor">Faltam XX dias</p>
-                            <p className="text-textcolor">XX dias ja foram esperados</p>
-                        </CardContent>
-                        <CardFooter className="justify-center">
-                            <p className="text-textcolor">19/09/24 - 16/01/25</p>
-                        </CardFooter>
-                    </Card>
+                    events.length !== 0 && events.map(event => (
+                        <Card className="bg-bgcolor mb-10 text-center" key={event.id}>
+                            <CardHeader>
+                                <CardTitle className="text-textcolor">{event.title}</CardTitle>
+                            </CardHeader>
+                            <CardContent className="p-0 mb-6">
+                                <p className="text-textcolor">Faltam {differenceInCalendarDays(event.starts_at, Date.now())} dias</p>
+                                <p className="text-textcolor">{differenceInCalendarDays(event.starts_at, event.created_at)} dias já foram esperados</p>
+                            </CardContent>
+                            <CardFooter className="justify-center">
+                                <p className="text-textcolor">{format(event.created_at, "dd/MM/yy")} - {format(event.starts_at, "dd/MM/yy")}</p>
+                            </CardFooter>
+                        </Card>
+                    ))
                 ) : (
                     <Skeleton className="h-56 w-10/11 bg-neutral-800 mx-auto mb-10" />
                 )}
 
-                <div className="flex flex-row justify-center">
+                <div className="flex flex-col justify-center">
                     {!loading ? (
                         <>
-                            <NewEvent />
+                            <div className="flex flex-row mb-3 mx-auto">
+                                <NewEvent />
+                                <Button asChild>
+                                    <Link to={`/edit/${id}`}>Editar página</Link>
+                                </Button>
+                            </div>
 
-                            <Button asChild>
-                                <Link to={"/edit"}>Editar página</Link>
-                            </Button>
+                            <Button className="mx-auto"><Share1Icon className="mr-2 h-4 w-4 align-middle" /> Convidar para Page</Button>
                         </>
                     ) : (
                         <>
-                            <Skeleton className="h-8 w-24 bg-neutral-800 mx-auto" />
-                            <Skeleton className="h-8 w-24 bg-neutral-800 mx-auto" />
+                            <div className="flex flex-row mb-3 mx-auto">
+                                <Skeleton className="h-8 w-24 bg-neutral-800 mx-auto mr-3" />
+                                <Skeleton className="h-8 w-24 bg-neutral-800 mx-auto" />
+                            </div>
+
+                            <Skeleton className="h-8 w-40 bg-neutral-800 mx-auto" />
                         </>
                     )}
                 </div>
