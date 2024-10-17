@@ -18,7 +18,7 @@ export const createLogin = async(req: Request, res: Response): Promise<void> => 
     try {
         const { email, password }: Infos = InfosSchema.parse(req.body)
 
-        const user = await prisma.user.findUnique({ where: { email } })
+        const user = await prisma.user.findUnique({ where: { email }, include: { pages: { include: { image: true } } } })
         if (!user) {
             res.status(404).json({ msg: "Usuario não encontrado" })
             return

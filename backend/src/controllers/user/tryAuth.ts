@@ -20,7 +20,7 @@ export const tryAuth = async(req: Request, res: Response): Promise<void> => {
     try {
         const refreshJwt = jwt.verify(refreshToken, process.env.JWT_SECRET as string) as jwtInfos
 
-        user = await prisma.user.findUnique({ where: { id: refreshJwt.id } })
+        user = await prisma.user.findUnique({ where: { id: refreshJwt.id }, include: { pages: { include: { image: true } } } })
         if (user === null) {
             res.status(400).json({ msg: "Sessão expirada, faça o login novamente" })
             return
