@@ -8,6 +8,7 @@ const pagesRouter: IRouter = express.Router()
 const upload: Multer = multer()
 
 // Routes
+pagesRouter.route("/:id").get(validateToken, (req: Request, res: Response) => pageController.getPage(req, res))
 pagesRouter.route("/").post(validateToken, upload.single("image"), (req: Request, res: Response) => pageController.createPage(req, res))
 pagesRouter.route("/event").post(validateToken, (req: Request, res: Response) => pageController.createEvent(req, res))
 pagesRouter.route("/event").delete(validateToken, (req: Request, res: Response) => pageController.deleteEvent(req, res))
