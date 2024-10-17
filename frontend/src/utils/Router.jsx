@@ -2,7 +2,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 // Pages
-import Home from "@/pages/Home"
+import Page from "@/pages/Page"
 import Edit from "@/pages/Edit"
 
 const Router = () => {
@@ -10,8 +10,8 @@ const Router = () => {
         <>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={ <Home /> } />
-                    <Route path="/edit" element={ <Edit /> } />
+                    <Route path="/:id" element={ <Page /> } />
+                    <Route path="/edit/:id" element={ <Edit /> } />
                 </Routes>
             </BrowserRouter>
         </>

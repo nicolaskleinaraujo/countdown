@@ -5,9 +5,11 @@ import { Button } from "@/components/ui/button"
 import NewEvent from "@/components/NewEvent"
 
 // Modules
-import { Link } from "react-router-dom" 
+import { Link, useParams } from "react-router-dom"
 
-const Home = () => {
+const Page = () => {
+    const { id } = useParams()
+
     return (
         <div className="flex flex-col justify-center items-center">
             <div className="bg-bgcolor p-10">
@@ -43,4 +45,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Page
