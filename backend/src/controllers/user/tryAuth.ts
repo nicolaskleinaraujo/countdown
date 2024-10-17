@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express"
 import jwt, { JwtPayload } from "jsonwebtoken"
 import { prisma } from "../../db/client"
-import { User, Pages, Images } from "@prisma/client"
+import { User, Pages } from "@prisma/client"
 
 interface jwtInfos extends JwtPayload {
     id: number,
@@ -22,7 +22,7 @@ interface UserInfos extends User {
 }
 
 export const tryAuth = async(req: Request, res: Response): Promise<void> => {
-    let user: UserInfos | null = null
+    let user: UserInfos | null
 
     // Validating the refresh token
     const refreshToken = req.signedCookies.refresh
