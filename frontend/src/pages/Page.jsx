@@ -71,7 +71,7 @@ const Page = () => {
                     {!loading ? (
                         <>
                             <div className="flex flex-row mb-3 mx-auto">
-                                <NewEvent />
+                                <NewEvent pageId={id} />
                                 <Button asChild>
                                     <Link to={`/edit/${id}`}>Editar página</Link>
                                 </Button>
