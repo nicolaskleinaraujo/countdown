@@ -38,7 +38,7 @@ export const tryAuth = async(req: Request, res: Response): Promise<void> => {
             where: { id: refreshJwt.id },
             include: {
                 pages: {
-                    include: { image: true } 
+                    include: { image: true, Events: true },
                 },
             },
         })

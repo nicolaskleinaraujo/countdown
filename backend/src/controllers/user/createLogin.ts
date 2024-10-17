@@ -36,10 +36,10 @@ export const createLogin = async(req: Request, res: Response): Promise<void> => 
         const user: UserInfos | null = await prisma.user.findUnique({ 
             where: { email }, 
             include: { 
-                pages: { 
-                    include: { image: true } 
-                } 
-            } 
+                pages: {
+                    include: { image: true, Events: true },
+                },
+            },
         })
 
         if (!user) {
