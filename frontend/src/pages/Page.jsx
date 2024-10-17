@@ -5,10 +5,30 @@ import { Button } from "@/components/ui/button"
 import NewEvent from "@/components/NewEvent"
 
 // Modules
+import dbFetch from "@/config/axios"
 import { Link, useParams } from "react-router-dom"
+import { useEffect, useState } from "react"
 
 const Page = () => {
     const { id } = useParams()
+
+    const [title, setTitle] = useState("")
+    const [image, setImage] = useState("")
+    const [events, setEvents] = useState([])
+
+    const getPage = async() => {
+        try {
+            const res = await dbFetch.get(`/pages/${id}`)
+
+            console.log(res.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        getPage()
+    }, [])
 
     return (
         <div className="flex flex-col justify-center items-center">
