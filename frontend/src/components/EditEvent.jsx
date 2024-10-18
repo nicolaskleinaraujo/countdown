@@ -41,7 +41,9 @@ const EditEvent = ({ eventId, pageId, infos }) => {
             const eventIndex = page.Events.findIndex(event => event.id == eventId)
             page.Events[eventIndex] = res.data.updatedEvent
 
-            setUserPages([userPages.filter(page => page.id != pageId), page])
+            const updatedPages = userPages.filter(page => page.id != pageId)
+            updatedPages.push(page)
+            setUserPages(updatedPages)
 
             toast.success(res.data.msg)
             setLoading(false)
