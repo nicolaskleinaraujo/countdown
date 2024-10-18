@@ -18,14 +18,14 @@ const UpdateImage = ({ pageId }) => {
 
     const { userId, userPages, setUserPages } = useContext(UserContext)
 
-    const handleImageUpdate = async(e) => {
+    const handleImageUpdate = async(image) => {
         setLoading(true)
 
         try {
             const formData = new FormData()
 
             formData.append("id", pageId)
-            formData.append("image", e)
+            formData.append("image", image)
 
             const res = await dbFetch.patch("/pages/image", formData, {
                 headers: {
@@ -34,7 +34,11 @@ const UpdateImage = ({ pageId }) => {
                 },
             })
 
-            console.log(res.data)
+            setUserPages([userPages.filter(page => page.id != pageId), res.data.updatedPage])
+
+            toast.success(res.data.msg)
+            setIsOpen(false)
+            setLoading(false)
         } catch (error) {
             toast.error(error.response.data.msg)
             setLoading(false)
@@ -44,7 +48,7 @@ const UpdateImage = ({ pageId }) => {
     return (
         <div>
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
-                {/* TODO add zod form */}
+                {/* TODO add zod validation */}
                 <DialogTrigger asChild>
                     <Pencil />
                 </DialogTrigger>
