@@ -1,6 +1,9 @@
 // Modules
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
+// Components
+import Navbar from "@/components/Navbar"
+
 // Pages
 import Page from "@/pages/Page"
 import Edit from "@/pages/Edit"
@@ -11,6 +14,7 @@ import Invite from "@/pages/Invite"
 const Router = () => {
     return (
         <>
+            <Navbar />
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={ <Home /> } />
