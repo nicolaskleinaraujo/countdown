@@ -39,17 +39,13 @@ const Edit = () => {
         }
     }
 
-    const deleteEvent = () => {
-        console.log("deletado")
-    }
-
     useEffect(() => {
         getPage()
     }, [userPages])
 
     return (
         <div className="flex flex-col justify-center items-center">
-            <div className="bg-bgcolor p-10">
+            <div className="bg-bgcolor p-10 w-screen min-h-screen">
                 <h1 className="text-center text-textcolor">{!loading ? title : <Skeleton className="h-6 w-56 mx-auto bg-neutral-800" /> }</h1>
                 { !loading ? <EditTitle pageId={id} /> : <Skeleton className="h-6 w-24 bg-neutral-800 mx-auto mt-3 mb-10" /> }
 
@@ -80,7 +76,7 @@ const Edit = () => {
 
                             <div className="flex flex-row justify-center mb-6">
                                 <EditEvent />
-                                <ConfirmDelete deleteFunc={deleteEvent} />
+                                <ConfirmDelete eventId={event.id} pageId={id} />
                             </div>
                         </Card>
                     ))
