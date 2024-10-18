@@ -38,7 +38,7 @@ const Page = () => {
 
     useEffect(() => {
         getPage()
-    }, [userPages])
+    }, [userPages, id])
 
     return (
         <div className="flex flex-col justify-center items-center">

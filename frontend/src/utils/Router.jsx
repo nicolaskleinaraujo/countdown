@@ -14,8 +14,8 @@ import Invite from "@/pages/Invite"
 const Router = () => {
     return (
         <>
-            <Navbar />
             <BrowserRouter>
+                <Navbar />
                 <Routes>
                     <Route path="/" element={ <Home /> } />
                     <Route path="/pages/:id" element={ <Page /> } />
