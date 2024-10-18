@@ -1,5 +1,6 @@
 // Controllers
 import { createEvent } from "./createEvent"
+import { createInvite } from "./createInvite"
 import { createPage } from "./createPage"
 import { deleteEvent } from "./deleteEvent"
 import { getPage } from "./getPage"
@@ -17,4 +18,5 @@ export const pageController = {
     updatePageTitle,
     getPage,
     invitePage,
+    createInvite,
 }

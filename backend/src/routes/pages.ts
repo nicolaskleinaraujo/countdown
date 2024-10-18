@@ -16,5 +16,6 @@ pagesRouter.route("/image").patch(validateToken, upload.single("image"), (req: R
 pagesRouter.route("/title").patch(validateToken, (req: Request, res: Response) => pageController.updatePageTitle(req, res))
 pagesRouter.route("/:id").get(validateToken, (req: Request, res: Response) => pageController.getPage(req, res))
 pagesRouter.route("/invite/:invite").get(validateToken, (req: Request, res: Response) => pageController.invitePage(req, res))
+pagesRouter.route("/invite").post(validateToken, (req: Request, res: Response) => pageController.createInvite(req, res))
 
 export default pagesRouter
