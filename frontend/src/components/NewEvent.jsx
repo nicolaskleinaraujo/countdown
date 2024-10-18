@@ -40,7 +40,9 @@ const NewEvent = ({ pageId }) => {
             const page = userPages.filter(page => page.id == pageId)[0]
             page.Events.push(res.data.event)
 
-            setUserPages([userPages.filter(page => page.id != pageId), page])
+            const updatedPages = userPages.filter(page => page.id != pageId)
+            updatedPages.push(page)
+            setUserPages(updatedPages)
 
             toast.success(res.data.msg)
             setIsOpen(false)
