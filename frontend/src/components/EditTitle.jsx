@@ -37,7 +37,9 @@ const EditTitle = ({ pageId, info }) => {
             const page = userPages.filter(page => page.id == pageId)[0]
             page.title = res.data.updatedPage.title
 
-            setUserPages([userPages.filter(page => page.id != pageId), page])
+            const updatedPages = userPages.filter(page => page.id != pageId)
+            updatedPages.push(page)
+            setUserPages(updatedPages)
 
             toast.success(res.data.msg)
             setIsOpen(false)
