@@ -29,7 +29,8 @@ export const updatePageImage = async(req: Request, res: Response): Promise<void>
                         filename: image.originalname + Date.now()
                     }
                 }
-            }
+            },
+            include: { Events: true, image: true },
         })
 
         res.status(200).json({ msg: "Pagina atualizada com sucesso", updatedPage })
