@@ -9,6 +9,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 import ConfirmDelete from "@/components/ConfirmDelete"
 import EditEvent from "@/components/EditEvent"
 import EditTitle from "@/components/EditTitle"
+import UpdateImage from "@/components/UpdateImage"
 
 // Modules
 import { Link, useParams } from "react-router-dom"
@@ -24,6 +25,8 @@ const Edit = () => {
     const [title, setTitle] = useState("")
     const [image, setImage] = useState("")
     const [events, setEvents] = useState([])
+
+    const [newImage, setNewImage] = useState()
 
     const getPage = async() => {
         setLoading(true)
@@ -54,8 +57,9 @@ const Edit = () => {
 
                     {!loading && (
                         <span className="flex opacity-0 absolute inset-0 group-hover:opacity-100 items-center justify-center ease-in-out duration-100">
-                            <Label htmlFor="picture"><Pencil /></Label>
-                            <Input id="picture" type="file" className="hidden" />
+                            {/*<Label htmlFor="picture"><Pencil /></Label>
+                            <Input id="picture" onChange={(e) => setNewImage(e.target.files[0])} type="file" className="hidden" />*/}
+                            <UpdateImage pageId={id} />
                         </span>
                     )}
                 </Avatar>
