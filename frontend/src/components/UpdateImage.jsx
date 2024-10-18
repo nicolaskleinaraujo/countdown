@@ -1,7 +1,6 @@
 // Components
-import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger, DialogHeader } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
-import { DialogFooter, DialogHeader } from "./ui/dialog"
 import { Input } from "@/components/ui/input"
 import { ReloadIcon } from "@radix-ui/react-icons"
 import { Pencil } from "lucide-react"

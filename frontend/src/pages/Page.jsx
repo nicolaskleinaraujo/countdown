@@ -11,6 +11,7 @@ import { Link, useParams } from "react-router-dom"
 import { useContext, useEffect, useState } from "react"
 import { UserContext } from "@/context/UserContext"
 import { format, differenceInCalendarDays as diffDays } from "date-fns"
+import Share from "@/components/Share"
 
 const Page = () => {
     const { id } = useParams()
@@ -67,7 +68,7 @@ const Page = () => {
                     <Skeleton className="h-56 w-10/11 bg-neutral-800 mx-auto mb-10" />
                 )}
 
-                <div className="flex flex-col justify-center">
+                <div className="flex flex-col justify-center items-center">
                     {!loading ? (
                         <>
                             <div className="flex flex-row mb-3 mx-auto">
@@ -77,7 +78,7 @@ const Page = () => {
                                 </Button>
                             </div>
 
-                            <Button className="mx-auto"><Share1Icon className="mr-2 h-4 w-4 align-middle" /> Convidar para Page</Button>
+                            <Share pageId={id} />
                         </>
                     ) : (
                         <>
