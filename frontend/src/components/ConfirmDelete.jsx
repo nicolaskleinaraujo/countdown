@@ -34,7 +34,9 @@ const ConfirmDelete = ({ eventId, pageId }) => {
             let page = userPages.filter(page => page.id == pageId)[0]
             page.Events = page.Events.filter(event => event.id != eventId)
 
-            setUserPages([userPages.filter(page => page.id != pageId), page])
+            const updatedPages = userPages.filter(page => page.id != pageId)
+            updatedPages.push(page)
+            setUserPages(updatedPages)
 
             toast.success(res.data.msg)
             setLoading(false)
