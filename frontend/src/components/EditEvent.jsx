@@ -19,13 +19,13 @@ import { toast } from "react-toastify"
 import dbFetch from "@/config/axios"
 import { UserContext } from "@/context/UserContext"
 
-const EditEvent = ({ eventId, pageId }) => {
+const EditEvent = ({ eventId, pageId, infos }) => {
     const [loading, setLoading] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
 
     const { userId, userPages, setUserPages } = useContext(UserContext)
-    const [title, setTitle] = useState("")
-    const [date, setDate] = useState(Date)
+    const [title, setTitle] = useState(infos.title)
+    const [date, setDate] = useState(infos.starts_at)
 
     const handleEdit = async() => {
         setLoading(true)
@@ -55,6 +55,7 @@ const EditEvent = ({ eventId, pageId }) => {
     return (
         <div>
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
+                {/* TODO add zod validation */}
                 <DialogTrigger asChild>
                     <Button className="mr-2">Editar</Button>
                 </DialogTrigger>
@@ -65,7 +66,7 @@ const EditEvent = ({ eventId, pageId }) => {
                         <DialogDescription>Edite as informações do evento</DialogDescription>
                     </DialogHeader>
 
-                    <Input type="text" placeholder="Titulo" onChange={(e) => setTitle(e.target.value)} />
+                    <Input type="text" placeholder="Titulo" value={title} onChange={(e) => setTitle(e.target.value)} />
                     <DatePicker date={date} setDate={setDate} />
 
                     <DialogFooter>
