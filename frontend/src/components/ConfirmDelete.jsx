@@ -36,6 +36,7 @@ const ConfirmDelete = ({ eventId, pageId }) => {
 
             setUserPages([userPages.filter(page => page.id != pageId), page])
 
+            toast.success(res.data.msg)
             setLoading(false)
             setIsOpen(false)
         } catch (error) {

@@ -75,7 +75,7 @@ const Edit = () => {
                             </CardFooter>
 
                             <div className="flex flex-row justify-center mb-6">
-                                <EditEvent />
+                                <EditEvent eventId={event.id} pageId={id} />
                                 <ConfirmDelete eventId={event.id} pageId={id} />
                             </div>
                         </Card>

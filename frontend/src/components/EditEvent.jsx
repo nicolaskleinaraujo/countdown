@@ -2,6 +2,7 @@
 import DatePicker from "./DatePicker"
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
+import { ReloadIcon } from "@radix-ui/react-icons"
 import {
     Dialog,
     DialogContent,
@@ -13,19 +14,47 @@ import {
 } from "@/components/ui/dialog"
 
 // Modules
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { toast } from "react-toastify"
+import dbFetch from "@/config/axios"
+import { UserContext } from "@/context/UserContext"
 
-const EditEvent = () => {
+const EditEvent = ({ eventId, pageId }) => {
+    const [loading, setLoading] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)
+
+    const { userId, userPages, setUserPages } = useContext(UserContext)
     const [title, setTitle] = useState("")
     const [date, setDate] = useState(Date)
 
-    const handleEdit = () => {
-        console.log(title, date)
+    const handleEdit = async() => {
+        setLoading(true)
+
+        try {
+            const res = await dbFetch.patch("/pages/event", {
+                title,
+                starts_at: new Date(date).toISOString(),
+                id: parseInt(eventId),
+            }, { headers: { "userId": userId }  })
+
+            const page = userPages.filter(page => page.id == pageId)[0]
+            const eventIndex = page.Events.findIndex(event => event.id == eventId)
+            page.Events[eventIndex] = res.data.updatedEvent
+
+            setUserPages([userPages.filter(page => page.id != pageId), page])
+
+            toast.success(res.data.msg)
+            setLoading(false)
+            setIsOpen(false)
+        } catch (error) {
+            toast.error(error.response.data.msg)
+            setLoading(false)
+        }
     }
 
     return (
         <div>
-            <Dialog>
+            <Dialog open={isOpen} onOpenChange={setIsOpen}>
                 <DialogTrigger asChild>
                     <Button className="mr-2">Editar</Button>
                 </DialogTrigger>
@@ -40,7 +69,7 @@ const EditEvent = () => {
                     <DatePicker date={date} setDate={setDate} />
 
                     <DialogFooter>
-                        <Button onClick={handleEdit}>Editar</Button>
+                        {!loading ? <Button onClick={handleEdit}>Editar</Button> : <Button disabled><ReloadIcon className="mr-2 h-4 w-4 animate-spin" />Carregando</Button>}
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
