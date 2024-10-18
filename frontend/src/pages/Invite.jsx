@@ -32,7 +32,9 @@ const Invite = () => {
                 headers: { "userId": userId }
             })
 
-            setUserPages([...userPages, res.data.page])
+            const newPages = userPages.filter(page => page.id != res.data.page.id)
+            newPages.push(res.data.page)
+            setUserPages(newPages)
 
             navigate(`/pages/${res.data.page.id}`)
         } catch (error) {
