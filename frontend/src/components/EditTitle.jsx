@@ -18,12 +18,12 @@ import { toast } from "react-toastify"
 import dbFetch from "@/config/axios"
 import { UserContext } from "@/context/UserContext"
 
-const EditTitle = ({ pageId }) => {
+const EditTitle = ({ pageId, info }) => {
     const [loading, setLoading] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
 
     const { userId, userPages, setUserPages } = useContext(UserContext)
-    const [title, setTitle] = useState("")
+    const [title, setTitle] = useState(info)
 
     const handleUpdate = async() => {
         setLoading(true)
@@ -62,7 +62,7 @@ const EditTitle = ({ pageId }) => {
                         <DialogDescription>Digite o novo titulo</DialogDescription>
                     </DialogHeader>
 
-                    <Input type="text" placeholder="Titulo" onChange={(e) => setTitle(e.target.value)} />
+                    <Input type="text" placeholder="Titulo" value={title} onChange={(e) => setTitle(e.target.value)} />
 
                     <DialogFooter>
                         { !loading ? <Button onClick={handleUpdate}>Atualizar</Button> : <Button disabled><ReloadIcon className="mr-2 h-4 w-4 animate-spin" />Carregando</Button> }
