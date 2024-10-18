@@ -33,7 +33,9 @@ const UpdateImage = ({ pageId }) => {
                 },
             })
 
-            setUserPages([userPages.filter(page => page.id != pageId), res.data.updatedPage])
+            const updatedPages = userPages.filter(page => page.id != pageId)
+            updatedPages.push(res.data.updatedPage)
+            setUserPages(updatedPages)
 
             toast.success(res.data.msg)
             setIsOpen(false)
