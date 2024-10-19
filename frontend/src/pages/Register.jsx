@@ -71,8 +71,8 @@ const Register = () => {
     }, [])
 
     return (
-        <div className="flex justify-center items-center flex-col bg-bgcolor h-screen">
-            <h2 className="text-textcolor text-2xl mb-5">Crie sua conta</h2>
+        <div className="flex justify-center items-center flex-col bg-bgcolor min-h-96">
+            <h2 className="text-textcolor text-2xl my-5">Crie sua conta</h2>
 
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(handleCreate)}>
@@ -130,7 +130,7 @@ const Register = () => {
                     </div>
                 </form>
             </Form>
-            <p className="text-textcolor mt-5">
+            <p className="text-textcolor my-5">
                 Já possui uma conta? 
                 <Button className="text-textcolor p-0 ml-1" variant="link">
                     <Link onClick={() => setRedirect(getRedirect)} to={"/login"}>Entrar</Link>
