@@ -130,6 +130,7 @@ const Register = () => {
                     </div>
                 </form>
             </Form>
+
             <p className="text-textcolor my-5">
                 Já possui uma conta? 
                 <Button className="text-textcolor p-0 ml-1" variant="link">

@@ -69,8 +69,8 @@ const Login = () => {
     }, [])
 
     return (
-        <div className="flex justify-center items-center flex-col bg-bgcolor h-screen">
-            <h2 className="text-textcolor text-2xl mb-5">Faça o seu login</h2>
+        <div className="flex justify-center items-center flex-col bg-bgcolor min-h-96">
+            <h2 className="text-textcolor text-2xl my-5">Faça o seu login</h2>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(handleLogin)}>
                     <FormField
@@ -113,7 +113,8 @@ const Login = () => {
                     </div>
                 </form>
             </Form>
-            <p className="text-textcolor mt-5">
+
+            <p className="text-textcolor my-5">
                 Não tem uma conta? 
                 <Button className="text-textcolor p-0 ml-1" variant="link">
                     <Link onClick={() => setRedirect(getRedirect)} to={"/register"}>Criar</Link>
