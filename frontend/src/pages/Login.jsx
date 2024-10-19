@@ -113,7 +113,12 @@ const Login = () => {
                     </div>
                 </form>
             </Form>
-            <p className="text-textcolor mt-5">Não tem uma conta? <Button className="text-textcolor p-0" variant="link"><Link to={"/register"}>Criar</Link></Button></p>
+            <p className="text-textcolor mt-5">
+                Não tem uma conta? 
+                <Button className="text-textcolor p-0" variant="link">
+                    <Link onClick={() => setRedirect(getRedirect)} to={"/register"}>Criar</Link>
+                </Button>
+            </p>
         </div>
     )
 }
