@@ -75,8 +75,11 @@ const Page = () => {
                         <>
                             <div className="flex flex-row mb-3 mx-auto">
                                 <NewEvent pageId={id} />
+
                                 <Button asChild>
-                                    <Link to={`/edit/${id}`}>Editar <span className="animate-pulse text-purple-400 ml-1">Page</span></Link>
+                                    { events.length !== 0 && (
+                                        <Link to={`/edit/${id}`}>Editar <span className="animate-pulse text-purple-400 ml-1">Page</span></Link>
+                                    )}
                                 </Button>
                             </div>
 
