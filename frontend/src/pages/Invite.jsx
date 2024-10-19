@@ -36,6 +36,7 @@ const Invite = () => {
             newPages.push(res.data.page)
             setUserPages(newPages)
 
+            toast.success("Convite aceito")
             navigate(`/pages/${res.data.page.id}`)
         } catch (error) {
             toast.error(error.response.data.msg)
@@ -44,7 +45,7 @@ const Invite = () => {
     }
 
     return (
-        <div className="flex flex-col justify-center items-center bg-bgcolor w-screen min-h-screen">
+        <div className="flex flex-col justify-center items-center bg-bgcolor w-screen min-h-96 py-40">
             <Card className="w-10/12 text-center">
                 <CardHeader>
                     <CardTitle>Você foi convidado(a) para uma Page</CardTitle>
@@ -60,7 +61,7 @@ const Invite = () => {
                             <Button onClick={handleInvite} className="mr-5">Aceitar</Button>
 
                             <Button variant="destructive" asChild>
-                                <Link to={"/"}>Recusar</Link>
+                                <Link to={"/"} onClick={() => toast.success("Convite recusado")}>Recusar</Link>
                             </Button>
                         </>
                     ) : (
