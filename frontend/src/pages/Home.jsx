@@ -1,12 +1,13 @@
 // Components
 import { Card, CardHeader, CardTitle } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
+import NewPage from "@/components/NewPage"
 
 // Modules
 import { useContext } from "react"
 import { UserContext } from "@/context/UserContext"
 import { Link } from "react-router-dom"
-import { Button } from "@/components/ui/button"
 
 const Home = () => {
     const { userId, userPages } = useContext(UserContext)
@@ -24,7 +25,7 @@ const Home = () => {
 
                     <div className="flex justify-center items-center">
                         { userId !== 0 ? (
-                            <Button>Crie sua <span className="animate-pulse text-purple-400 ml-1">Page</span></Button>
+                            <NewPage />
                         ) : (
                             <Button asChild>
                                 <Link to={"/register"}>Crie sua conta</Link>
@@ -52,7 +53,7 @@ const Home = () => {
                     ))}
 
                     <div className="flex justify-center items-center">
-                        <Button>Nova <span className="animate-pulse text-purple-400 ml-1">Page</span></Button>
+                        <NewPage />
                     </div>
                 </>
             )}
