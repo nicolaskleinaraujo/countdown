@@ -28,7 +28,7 @@ const Register = () => {
     const [getRedirect, setGetRedirect] = useState("")
 
     const { redirect, setRedirect } = useContext(RedirectContext)
-    const { setUserId, setUserPages } = useContext(UserContext)
+    const { setUserId } = useContext(UserContext)
 
     const saveRedirect = () => {
         if (redirect !== "") {
@@ -48,7 +48,6 @@ const Register = () => {
             })
 
             setUserId(res.data.user.id)
-            setUserPages(res.data.user.pages)
 
             setLoading(false)
             navigate(getRedirect !== "" ? getRedirect : "/")
