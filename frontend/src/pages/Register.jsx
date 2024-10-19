@@ -63,7 +63,7 @@ const Register = () => {
         defaultValues: { 
             email: "",
             password: "",
-            password: "",
+            nickname: "",
         }
     })
 
@@ -133,7 +133,7 @@ const Register = () => {
             </Form>
             <p className="text-textcolor mt-5">
                 Já possui uma conta? 
-                <Button className="text-textcolor p-0" variant="link">
+                <Button className="text-textcolor p-0 ml-1" variant="link">
                     <Link onClick={() => setRedirect(getRedirect)} to={"/login"}>Entrar</Link>
                 </Button>
             </p>

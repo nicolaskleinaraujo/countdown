@@ -115,7 +115,7 @@ const Login = () => {
             </Form>
             <p className="text-textcolor mt-5">
                 Não tem uma conta? 
-                <Button className="text-textcolor p-0" variant="link">
+                <Button className="text-textcolor p-0 ml-1" variant="link">
                     <Link onClick={() => setRedirect(getRedirect)} to={"/register"}>Criar</Link>
                 </Button>
             </p>
