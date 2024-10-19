@@ -13,7 +13,7 @@ const Home = () => {
     const { userId, userPages } = useContext(UserContext)
 
     return (
-        <div className="flex flex-col bg-bgcolor h-screen pt-5">
+        <div className="flex flex-col justify-center bg-bgcolor min-h-96">
             { userPages.length === 0 ? (
                 <>
                     <div className="flex flex-col justify-center items-center text-textcolor text-center gap-5 mb-5 mx-5">
@@ -35,7 +35,7 @@ const Home = () => {
                 </>
             ) : (
                 <>
-                    <h1 className="font-bold text-3xl animate-pulse text-purple-400 text-center mb-5">Countdown</h1>
+                    <h1 className="font-bold text-3xl animate-pulse text-purple-400 text-center my-5">Countdown</h1>
 
                     { userPages.map(page => (
                         <Link to={`/pages/${page.id}`} key={page.id}>
