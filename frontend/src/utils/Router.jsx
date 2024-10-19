@@ -10,6 +10,7 @@ import Edit from "@/pages/Edit"
 import Login from "@/pages/Login"
 import Home from "@/pages/Home"
 import Invite from "@/pages/Invite"
+import Register from "@/pages/Register"
 
 const Router = () => {
     return (
@@ -22,6 +23,7 @@ const Router = () => {
                     <Route path="/edit/:id" element={ <Edit /> } />
                     <Route path="/login" element={ <Login /> } />
                     <Route path="/invite/:token" element={ <Invite /> } />
+                    <Route path="/register" element={ <Register /> } />
                 </Routes>
             </BrowserRouter>
         </>

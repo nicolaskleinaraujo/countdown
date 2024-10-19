@@ -18,9 +18,10 @@ import { toast } from "react-toastify"
 const formSchema = z.object({
     email: z.string().email({ message: "Digite um email válido" }).trim().min(3, { message: "Minimo de 3 caracteres" }).max(150),
     password: z.string().trim().min(5, { message: "Minimo de 5 caracteres" }).max(150),
+    nickname: z.string().trim().min(3, { message: "Minimo de 3 caracteres" }).max(15, { message: "Máximo de 15 caracteres" }),
 })
 
-const Login = () => {
+const Register = () => {
     const navigate = useNavigate()
 
     const [loading, setLoading] = useState(false)
@@ -36,13 +37,14 @@ const Login = () => {
         }
     }
 
-    const handleLogin = async(values) => {
+    const handleCreate = async(values) => {
         setLoading(true)
 
         try {
-            const res = await dbFetch.post("/users/login", {
+            const res = await dbFetch.post("/users", {
                 email: values.email,
                 password: values.password,
+                nickname: values.nickname,
             })
 
             setUserId(res.data.user.id)
@@ -61,6 +63,7 @@ const Login = () => {
         defaultValues: { 
             email: "",
             password: "",
+            password: "",
         }
     })
 
@@ -70,9 +73,10 @@ const Login = () => {
 
     return (
         <div className="flex justify-center items-center flex-col bg-bgcolor h-screen">
-            <h2 className="text-textcolor text-2xl mb-5">Faça o seu login</h2>
+            <h2 className="text-textcolor text-2xl mb-5">Crie sua conta</h2>
+
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(handleLogin)}>
+                <form onSubmit={form.handleSubmit(handleCreate)}>
                     <FormField
                         control={form.control}
                         name="email"
@@ -91,10 +95,24 @@ const Login = () => {
                         control={form.control}
                         name="password"
                         render={({ field }) => (
-                            <FormItem className="text-textcolor">
+                            <FormItem className="text-textcolor mb-5">
                                 <FormLabel>Senha</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Digite sua senha" {...field} />
+                                    <Input placeholder="Crie sua senha" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+
+                    <FormField
+                        control={form.control}
+                        name="nickname"
+                        render={({ field }) => (
+                            <FormItem className="text-textcolor mb-5">
+                                <FormLabel>Nickname</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="Crie seu nickname" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -103,7 +121,7 @@ const Login = () => {
 
                     <div className="flex justify-center mt-5">
                         {!loading ? (
-                            <Button type="submit">Login</Button>
+                            <Button type="submit">Criar</Button>
                         ) : (
                             <Button disabled>
                                 <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
@@ -113,9 +131,9 @@ const Login = () => {
                     </div>
                 </form>
             </Form>
-            <p className="text-textcolor mt-5">Não tem uma conta? <Button className="text-textcolor p-0" variant="link"><Link to={"/register"}>Criar</Link></Button></p>
+            <p className="text-textcolor mt-5">Já possui uma conta? <Button className="text-textcolor p-0" variant="link"><Link to={"/login"}>Entrar</Link></Button></p>
         </div>
     )
 }
 
-export default Login
+export default Register
