@@ -42,8 +42,10 @@ const Page = () => {
 
     return (
         <div className="flex flex-col justify-center items-center">
-            <div className="bg-bgcolor p-10 w-screen min-h-screen">
-                <h1 className="text-center mb-10 text-textcolor">{!loading ? title : <Skeleton className="h-6 w-56 mx-auto bg-neutral-800" /> }</h1>
+            <div className="bg-bgcolor p-10 w-screen min-h-96">
+                <h1 className="text-center mb-10 font-bold text-lg animate-pulse text-purple-400">
+                    {!loading ? title : <Skeleton className="h-6 w-56 mx-auto bg-neutral-800" /> }
+                </h1>
 
                 <Avatar className="mb-10 mx-auto w-44 h-44">
                     {!loading ? <AvatarImage src={image} /> : <Skeleton className="w-44 h-44 bg-neutral-800" />}
@@ -74,7 +76,7 @@ const Page = () => {
                             <div className="flex flex-row mb-3 mx-auto">
                                 <NewEvent pageId={id} />
                                 <Button asChild>
-                                    <Link to={`/edit/${id}`}>Editar página</Link>
+                                    <Link to={`/edit/${id}`}>Editar <span className="animate-pulse text-purple-400 ml-1">Page</span></Link>
                                 </Button>
                             </div>
 
