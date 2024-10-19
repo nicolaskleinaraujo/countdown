@@ -4,18 +4,19 @@ import { useEffect, useState, useContext } from 'react'
 import { UserContext } from "../context/UserContext"
 
 const useAuth = () => {
-    const { setUserId } = useContext(UserContext)
+    const { setUserId, setUserPages } = useContext(UserContext)
 
     const [authUserId, setAuthUserId] = useState(0)
-    const [ loading, setLoading ] = useState(true)
+    const [loading, setLoading] = useState(true)
 
     const fetchData = async() => {
         try {
             const res = await dbFetch.post("/users/tryauth")
 
-            setAuthUserId(res.data.user.id)
             setUserId(res.data.user.id)
-    
+            setUserPages(res.data.user.pages)
+
+            setAuthUserId(res.data.user.id)
             setLoading(false)
         } catch (error) {
             setLoading(false)
