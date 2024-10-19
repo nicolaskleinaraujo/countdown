@@ -1,7 +1,18 @@
 import { prisma } from "../../db/client"
 import { Request, Response } from "express"
 import { z } from "zod"
+import { Pages } from "@prisma/client"
 import sharp = require("sharp")
+
+interface ImagesInfos {
+    id: number
+    filename: string
+    content: string | Buffer
+}
+
+interface PagesInfos extends Pages {
+    image: ImagesInfos,
+}
 
 interface Page {
     title: string,
@@ -26,7 +37,7 @@ export const createPage = async(req: Request, res: Response): Promise<void> => {
             return
         }
 
-        const page = await prisma.pages.create({
+        const page: PagesInfos = await prisma.pages.create({
             data: {
                 title,
                 image: {
@@ -37,7 +48,11 @@ export const createPage = async(req: Request, res: Response): Promise<void> => {
                 },
                 users: { connect: { id: Number(userId) } },
             },
+            include: { Events: true, image: true },
         })
+
+        // Converting image to base64
+        page.image.content = page.image.content.toString("base64")
 
         res.status(201).json({ msg: "Page criada com sucesso", page })
     } catch (error) {
