@@ -11,6 +11,7 @@ import Login from "@/pages/Login"
 import Home from "@/pages/Home"
 import Invite from "@/pages/Invite"
 import Register from "@/pages/Register"
+import UserRoute from "./UserRoute"
 
 const Router = () => {
     return (
@@ -19,11 +20,14 @@ const Router = () => {
                 <Navbar />
                 <Routes>
                     <Route path="/" element={ <Home /> } />
-                    <Route path="/pages/:id" element={ <Page /> } />
-                    <Route path="/edit/:id" element={ <Edit /> } />
                     <Route path="/login" element={ <Login /> } />
-                    <Route path="/invite/:token" element={ <Invite /> } />
                     <Route path="/register" element={ <Register /> } />
+
+                    <Route element={ <UserRoute /> }>
+                        <Route path="/pages/:id" element={ <Page /> } />
+                        <Route path="/edit/:id" element={ <Edit /> } />
+                        <Route path="/invite/:token" element={ <Invite /> } />
+                    </Route>
                 </Routes>
             </BrowserRouter>
         </>
