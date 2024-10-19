@@ -53,7 +53,10 @@ const Share = ({ pageId }) => {
         <div>
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
                 <DialogTrigger asChild>
-                    <Button><Share1Icon className="mr-2 h-4 w-4 align-middle" /> Convidar para Page</Button>
+                    <Button>
+                        <Share1Icon className="mr-2 h-4 w-4 align-middle" /> 
+                        Convidar para <span className="animate-pulse text-purple-400 ml-1">Page</span>
+                    </Button>
                 </DialogTrigger>
 
                 <DialogContent className="max-w-md">
