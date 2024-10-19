@@ -9,7 +9,7 @@ import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 
 const Home = () => {
-    const { userPages } = useContext(UserContext)
+    const { userId, userPages } = useContext(UserContext)
 
     return (
         <div className="flex flex-col bg-bgcolor h-screen pt-5">
@@ -23,7 +23,13 @@ const Home = () => {
                     </div>
 
                     <div className="flex justify-center items-center">
-                        <Button>Crie sua <span className="animate-pulse text-purple-400 ml-1">Page</span></Button>
+                        { userId !== 0 ? (
+                            <Button>Crie sua <span className="animate-pulse text-purple-400 ml-1">Page</span></Button>
+                        ) : (
+                            <Button asChild>
+                                <Link to={"/register"}>Crie sua conta</Link>
+                            </Button>
+                        )}
                     </div>
                 </>
             ) : (
