@@ -15,10 +15,21 @@ const Home = () => {
         <div className="flex flex-col bg-bgcolor h-screen pt-5">
             { userPages.length === 0 ? (
                 <>
-                    <p>Crie uma "Page" personalizada</p>
+                    <div className="flex flex-col justify-center items-center text-textcolor text-center gap-5 mb-5 mx-5">
+                        <h1 className="font-bold text-3xl animate-pulse text-purple-400">Countdown</h1>
+                        <h2>Bem-vindo(a) ao <span className="animate-pulse text-purple-400">Countdown!</span></h2>
+                        <p>Crie uma <span className="animate-pulse text-purple-400">Page</span> personalizada e compartilhe com pessoas você que ama!</p>
+                        <p>Adicione datas importantes para tornar esta espera especial</p>
+                    </div>
+
+                    <div className="flex justify-center items-center">
+                        <Button>Crie sua <span className="animate-pulse text-purple-400 ml-1">Page</span></Button>
+                    </div>
                 </>
             ) : (
                 <>
+                    <h1 className="font-bold text-3xl animate-pulse text-purple-400 text-center mb-5">Countdown</h1>
+
                     { userPages.map(page => (
                         <Link to={`/pages/${page.id}`} key={page.id}>
                             <Card className="text-cent mx-5 mb-5 p-2 text-center">
@@ -35,7 +46,7 @@ const Home = () => {
                     ))}
 
                     <div className="flex justify-center items-center">
-                        <Button>Nova Page</Button>
+                        <Button>Nova <span className="animate-pulse text-purple-400 ml-1">Page</span></Button>
                     </div>
                 </>
             )}
