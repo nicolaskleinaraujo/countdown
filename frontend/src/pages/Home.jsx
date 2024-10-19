@@ -35,7 +35,7 @@ const Home = () => {
                 </>
             ) : (
                 <>
-                    <h1 className="font-bold text-3xl animate-pulse text-purple-400 text-center my-5">Countdown</h1>
+                    <h1 className="font-bold text-3xl animate-pulse text-purple-400 text-center mb-5">Countdown</h1>
 
                     { userPages.map(page => (
                         <Link to={`/pages/${page.id}`} key={page.id}>

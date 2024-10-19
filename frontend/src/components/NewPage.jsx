@@ -61,7 +61,7 @@ const NewPage = () => {
                 {/* TODO add zod form */}
                 <DialogTrigger asChild>
                     { userPages.length !== 0 ? (
-                        <Button className="mb-5">Nova <span className="animate-pulse text-purple-400 ml-1">Page</span></Button>
+                        <Button>Nova <span className="animate-pulse text-purple-400 ml-1">Page</span></Button>
                     ) : (
                         <Button>Crie sua <span className="animate-pulse text-purple-400 ml-1">Page</span></Button>
                     )}
