@@ -39,8 +39,8 @@ const Home = () => {
 
                     { userPages.map(page => (
                         <Link to={`/pages/${page.id}`} key={page.id}>
-                            <Card className="text-cent mx-5 mb-5 p-2 text-center">
-                                <Avatar className="mx-auto w-28 h-28 border-2 border-bgcolor">
+                            <Card className="flex flex-col justify-center items-center text-cent mx-5 mb-5 p-2 text-center shadow-lg shadow-bgcolor2">
+                                <Avatar className="mx-auto w-28 h-28 border-2 border-bgcolor mt-3">
                                     <AvatarImage src={`data:image/png;base64,${page.image.content}`} />
                                     <AvatarFallback>Imagem da Page</AvatarFallback>
                                 </Avatar>
