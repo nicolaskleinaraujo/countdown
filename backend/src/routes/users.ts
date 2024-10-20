@@ -11,5 +11,6 @@ usersRouter.route("/").delete(validateToken, (req: Request, res: Response) => us
 usersRouter.route("/login").post((req: Request, res: Response) => userController.createLogin(req, res))
 usersRouter.route("/tryauth").post((req: Request, res: Response) => userController.tryAuth(req, res))
 usersRouter.route("/").patch(validateToken, (req: Request, res: Response) => userController.updateUser(req, res))
+usersRouter.route("/deauth").get(validateToken, (req: Request, res: Response) => userController.deAuth(req, res))
 
 export default usersRouter
