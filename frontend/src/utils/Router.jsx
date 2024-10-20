@@ -13,6 +13,7 @@ import Home from "@/pages/Home"
 import Invite from "@/pages/Invite"
 import Register from "@/pages/Register"
 import UserRoute from "./UserRoute"
+import User from "@/pages/User"
 
 const Router = () => {
     return (
@@ -28,6 +29,7 @@ const Router = () => {
                         <Route path="/pages/:id" element={ <Page /> } />
                         <Route path="/edit/:id" element={ <Edit /> } />
                         <Route path="/invite/:token" element={ <Invite /> } />
+                        <Route path="/user" element={ <User /> } />
                     </Route>
                 </Routes>
                 <Footer />
