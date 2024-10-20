@@ -8,7 +8,7 @@ import { Link } from "react-router-dom"
 
 const Footer = () => {
     return (
-        <footer className="flex flex-col justify-center items-center bg-bgcolor text-textcolor border-t-2">
+        <footer className="flex flex-col justify-center items-center bg-bgcolor2 text-textcolor border-t-2">
             <Link className="flex flex-row justify-center items-center my-8" to={"/"}>
                 <Timer className="h-8 w-8 animate-pulse text-purple-400 mr-2" />
                 <span className="text-lg font-bold">Countdown</span>

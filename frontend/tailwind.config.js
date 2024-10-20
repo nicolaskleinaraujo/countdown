@@ -15,10 +15,7 @@ export default {
       colors: {
         "bgcolor": "#09090B",
         "textcolor": "#FAFAFA",
-        "color2": "#30303D",
-        "color3": "#414170",
-        "color4": "#3E3EA3",
-        "color5": "#2727D6",
+        "bgcolor2": "#1A1A2E",
       }
     }
   },
