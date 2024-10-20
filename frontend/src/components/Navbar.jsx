@@ -3,8 +3,12 @@ import { Timer, User } from "lucide-react"
 
 // Modules
 import { Link } from "react-router-dom"
+import { useContext } from "react"
+import { UserContext } from "@/context/UserContext"
 
 const Navbar = () => {
+    const { userId } = useContext(UserContext)
+
     return (
         <nav className="flex flex-1 flex-row justify-between items-center bg-bgcolor border-b-2 p-3 text-textcolor">
             <Link className="flex flex-row justify-center items-center ml-2" to={"/"}>
@@ -13,7 +17,7 @@ const Navbar = () => {
             </Link>
 
             <div className="flex flex-row justify-center items-center mr-2">
-                <Link to={"/login"}><User /></Link>
+                <Link to={userId !== 0 ? "/user" : "/login"}><User /></Link>
             </div>
         </nav>
     )
