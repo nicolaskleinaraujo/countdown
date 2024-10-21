@@ -35,7 +35,7 @@ const User = () => {
     }
 
     return (
-        <div className="flex flex-col justify-center items-center gap-12 bg-bgcolor min-h-96">
+        <div className="flex flex-col justify-center items-center gap-12 bg-bgcolor min-h-[80vh]">
             <h2 className="text-textcolor font-bold text-2xl">Minha conta</h2>
 
             {!loading ? (
