@@ -2,6 +2,7 @@
 import { Button } from "./ui/button"
 import { ReloadIcon } from "@radix-ui/react-icons"
 import { Input } from "./ui/input"
+import { Eye, EyeOff } from "lucide-react"
 import {
     Dialog,
     DialogContent,
@@ -22,6 +23,9 @@ const UpdateUser = () => {
     const [isOpen, setIsOpen] = useState(false)
 
     const { userId } = useContext(UserContext)
+
+    const [showOldPassword, setShowOldPassword] = useState(false)
+    const [showPassword, setShowPassword] = useState(false)
 
     const [oldPassword, setOldPassword] = useState("")
     const [password, setPassword] = useState("")
@@ -61,8 +65,50 @@ const UpdateUser = () => {
                         <DialogDescription>Deseja mesmo mudar as informações da sua conta?</DialogDescription>
                     </DialogHeader>
 
-                    <Input type="text" placeholder="Senha Atual" onChange={(e) => setOldPassword(e.target.value)} />
-                    <Input type="text" placeholder="Nova Senha" onChange={(e) => setPassword(e.target.value)} />
+                    <div className="relative">
+                        <Input 
+                            type={ showOldPassword ? "text" : "password" } 
+                            placeholder="Senha Atual" 
+                            onChange={(e) => setOldPassword(e.target.value)} 
+                        />
+
+                        <Button
+                            type="button" 
+                            onClick={() => setShowOldPassword(!showOldPassword)} 
+                            variant="link"
+                            size="icon" 
+                            className="absolute top-0 right-0"
+                        >
+                            {showOldPassword ? (
+                                <EyeOff className="h-4 w-4" />
+                            ) : (
+                                <Eye className="h-4 w-4" />
+                            )}
+                        </Button>
+                    </div>
+
+                    <div className="relative">
+                        <Input 
+                            type={ showPassword ? "text" : "password" } 
+                            placeholder="Nova Senha" 
+                            onChange={(e) => setPassword(e.target.value)} 
+                        />
+
+                        <Button
+                            type="button" 
+                            onClick={() => setShowPassword(!showPassword)} 
+                            variant="link"
+                            size="icon" 
+                            className="absolute top-0 right-0"
+                        >
+                            {showPassword ? (
+                                <EyeOff className="h-4 w-4" />
+                            ) : (
+                                <Eye className="h-4 w-4" />
+                            )}
+                        </Button>
+                    </div>
+
                     <Input type="text" placeholder="Nickname" onChange={(e) => setNickname(e.target.value)} />
 
                     {!loading ? (
