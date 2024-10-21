@@ -11,7 +11,7 @@ import { toast } from "react-toastify"
 import { UserContext } from "@/context/UserContext"
 
 const Share = ({ pageId }) => {
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [isOpen, setIsOpen] = useState(false)
 
     const { userId } = useContext(UserContext)
