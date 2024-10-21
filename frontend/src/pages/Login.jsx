@@ -72,7 +72,7 @@ const Login = () => {
     }, [])
 
     return (
-        <div className="flex justify-center items-center flex-col bg-bgcolor min-h-96">
+        <div className="flex justify-center items-center flex-col bg-bgcolor min-h-[80vh]">
             <h2 className="text-textcolor text-2xl my-5">Faça o seu login</h2>
 
             <Form {...form}>
