@@ -63,7 +63,6 @@ export const createLogin = async(req: Request, res: Response): Promise<void> => 
             signed: true,
             secure: true,
             sameSite: "none",
-            maxAge: 1 * 60 * 60 * 1000,
         })
 
         res.cookie("refresh", refreshToken, {
@@ -71,7 +70,6 @@ export const createLogin = async(req: Request, res: Response): Promise<void> => 
             signed: true,
             secure: true,
             sameSite: "none",
-            maxAge: 60 * 24 * 60 * 60 * 1000,
         })
 
         // Convert pages images to base64

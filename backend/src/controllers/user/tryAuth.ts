@@ -79,7 +79,6 @@ export const tryAuth = async(req: Request, res: Response): Promise<void> => {
             signed: true,
             secure: true,
             sameSite: "none",
-            maxAge: 1 * 60 * 60 * 1000,
         })
     }
 

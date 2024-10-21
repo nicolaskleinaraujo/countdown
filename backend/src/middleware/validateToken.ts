@@ -61,7 +61,6 @@ export const validateToken = async(req: Request, res: Response, next: NextFuncti
             signed: true,
             secure: true,
             sameSite: "none",
-            maxAge: 1 * 60 * 60 * 1000,
         })
     }
 

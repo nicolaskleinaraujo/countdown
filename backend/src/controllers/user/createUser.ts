@@ -48,7 +48,6 @@ export const createUser = async(req: Request, res: Response): Promise<void> => {
             signed: true,
             secure: true,
             sameSite: "none",
-            maxAge: 1 * 60 * 60 * 1000,
         })
 
         res.cookie("refresh", refreshToken, {
@@ -56,7 +55,6 @@ export const createUser = async(req: Request, res: Response): Promise<void> => {
             signed: true,
             secure: true,
             sameSite: "none",
-            maxAge: 60 * 24 * 60 * 60 * 1000,
         })
 
         res.status(201).json({ user, msg: "Usuario criado com sucesso" })

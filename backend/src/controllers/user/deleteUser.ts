@@ -30,6 +30,9 @@ export const deleteUser = async(req: Request, res:Response): Promise<void> => {
 
         await prisma.user.delete({ where: { id: user.id } })
 
+        res.clearCookie("access")
+        res.clearCookie("refresh")
+
         res.status(200).json({ msg: "Usuario deletado com sucesso" })
     } catch (error) {
         if (error instanceof z.ZodError) {
