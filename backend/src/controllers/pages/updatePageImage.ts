@@ -36,7 +36,7 @@ export const updatePageImage = async(req: Request, res: Response): Promise<void>
             data: {
                 image: {
                     update: {
-                        content: await sharp(image.buffer).toFormat("webp").toBuffer(),
+                        content: await sharp(image.buffer).resize(400, 400).toFormat("webp").toBuffer(),
                         filename: image.originalname + Date.now()
                     }
                 }
