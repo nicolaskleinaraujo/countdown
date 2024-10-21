@@ -1,6 +1,6 @@
 // Components
 import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger, DialogHeader, DialogClose, DialogFooter } from "@/components/ui/dialog"
-import { CopyIcon, Share1Icon } from "@radix-ui/react-icons"
+import { CopyIcon, ReloadIcon, Share1Icon } from "@radix-ui/react-icons"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
@@ -60,13 +60,13 @@ const Share = ({ pageId }) => {
                 </DialogTrigger>
 
                 <DialogContent className="max-w-md">
+                    <DialogHeader>
+                        <DialogTitle>Compartilhar link</DialogTitle>
+                        <DialogDescription>Qualquer pessoa com o link abaixo conseguira entrar na Page</DialogDescription>
+                    </DialogHeader>
+
                     {!loading ? (
                         <>
-                            <DialogHeader>
-                                <DialogTitle>Compartilhar link</DialogTitle>
-                                <DialogDescription>Qualquer pessoa com o link abaixo conseguira entrar na Page</DialogDescription>
-                            </DialogHeader>
-
                             <div className="flex items-center space-x-2">
                                 <Input className="grid flex-1 gap-2" readOnly value={link} />
 
@@ -82,7 +82,7 @@ const Share = ({ pageId }) => {
                             </DialogFooter>
                         </>
                     ) : (
-                        <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+                        <ReloadIcon className="mx-auto h-8 w-8 animate-spin" />
                     )}
                 </DialogContent>
             </Dialog>
