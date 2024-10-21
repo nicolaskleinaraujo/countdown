@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button"
 import { ReloadIcon } from "@radix-ui/react-icons"
 import DeleteAccount from "@/components/DeleteAccount"
+import UpdateUser from "@/components/UpdateUser"
 
 // Modules
 import dbFetch from "@/config/axios"
@@ -39,7 +40,7 @@ const User = () => {
 
             {!loading ? (
                 <>
-                    <Button>Mudar Informações</Button>
+                    <UpdateUser />
                     <DeleteAccount />
                     <Button onClick={() => deAuth()}>Sair</Button>
                 </>

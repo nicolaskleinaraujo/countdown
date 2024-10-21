@@ -16,10 +16,8 @@ import dbFetch from "@/config/axios"
 import { UserContext } from "@/context/UserContext"
 import { useContext, useState } from "react"
 import { toast } from "react-toastify"
-import { useNavigate } from "react-router-dom"
 
 const UpdateUser = () => {
-    const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
 
@@ -30,7 +28,23 @@ const UpdateUser = () => {
     const [nickname, setNickname] = useState("")
 
     const handleUpdate = async() => {
-        console.log("Updated")
+        setLoading(true)
+
+        try {
+            const res = await dbFetch.patch("/users", {
+                oldPassword: oldPassword,
+                password: password,
+                nickname: nickname,
+            }, { headers: { "userId": userId } })
+
+            toast.success(res.data.msg)
+
+            setLoading(false)
+            setIsOpen(false)
+        } catch (error) {
+            toast.error(error.response.data.msg)
+            setLoading(false)
+        }
     }
 
     return (
@@ -38,7 +52,7 @@ const UpdateUser = () => {
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
                 {/* TODO add zod validation */}
                 <DialogTrigger asChild>
-                    <Button variant="destructive">Mudar Informações</Button>
+                    <Button>Mudar Informações</Button>
                 </DialogTrigger>
 
                 <DialogContent className="max-w-md">
@@ -52,7 +66,7 @@ const UpdateUser = () => {
                     <Input type="text" placeholder="Nickname" onChange={(e) => setNickname(e.target.value)} />
 
                     {!loading ? (
-                        <Button variant="destructive" onClick={handleUpdate}>Atualizar</Button>
+                        <Button onClick={handleUpdate}>Atualizar</Button>
                     ) : (
                         <Button disabled><ReloadIcon className="mr-2 h-4 w-4 animate-spin" />Carregando</Button>
                     )}
