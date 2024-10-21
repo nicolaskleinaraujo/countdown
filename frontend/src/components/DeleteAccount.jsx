@@ -2,6 +2,7 @@
 import { Button } from "./ui/button"
 import { ReloadIcon } from "@radix-ui/react-icons"
 import { Input } from "./ui/input"
+import { Eye, EyeOff } from "lucide-react"
 import {
     Dialog,
     DialogContent,
@@ -22,6 +23,8 @@ const DeleteAccount = () => {
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
+
+    const [showPassword, setShowPassword] = useState(false)
 
     const { userId, setUserId, setUserPages } = useContext(UserContext)
     const [password, setPassword] = useState("")
@@ -60,7 +63,27 @@ const DeleteAccount = () => {
                         <DialogDescription>Deseja mesmo excluir a sua conta? Esta ação é irreversível!</DialogDescription>
                     </DialogHeader>
 
-                    <Input type="text" placeholder="Senha" onChange={(e) => setPassword(e.target.value)} />
+                    <div className="relative">
+                        <Input 
+                            type={ showPassword ? "text" : "password" } 
+                            placeholder="Senha" 
+                            onChange={(e) => setPassword(e.target.value)} 
+                        />
+
+                        <Button
+                            type="button" 
+                            onClick={() => setShowPassword(!showPassword)} 
+                            variant="link"
+                            size="icon" 
+                            className="absolute top-0 right-0"
+                        >
+                            {showPassword ? (
+                                <EyeOff className="h-4 w-4" />
+                            ) : (
+                                <Eye className="h-4 w-4" />
+                            )}
+                        </Button>
+                    </div>
 
                     {!loading ? (
                         <Button variant="destructive" onClick={handleDelete}>Excluir</Button>
