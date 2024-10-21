@@ -13,10 +13,10 @@ const Home = () => {
     const { userId, userPages } = useContext(UserContext)
 
     return (
-        <div className="flex flex-col justify-center bg-bgcolor min-h-96">
+        <div className="flex flex-col justify-center bg-bgcolor min-h-[80vh]">
             { userPages.length === 0 ? (
                 <>
-                    <div className="flex flex-col justify-center items-center text-textcolor text-center gap-5 mb-5 mx-5">
+                    <div className="flex flex-col justify-center items-center text-textcolor text-center gap-8 mb-8 mx-5">
                         <h1 className="font-bold text-3xl animate-pulse text-purple-400">Countdown</h1>
                         <h2>Bem-vindo(a) ao <span className="animate-pulse text-purple-400">Countdown!</span></h2>
                         <p>Crie uma <span className="animate-pulse text-purple-400">Page</span> personalizada e compartilhe com pessoas você que ama!</p>
