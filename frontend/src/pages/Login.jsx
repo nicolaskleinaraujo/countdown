@@ -3,6 +3,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { ReloadIcon } from "@radix-ui/react-icons"
+import { Eye, EyeOff } from "lucide-react"
 
 // Modules
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -28,6 +29,8 @@ const Login = () => {
 
     const { redirect, setRedirect } = useContext(RedirectContext)
     const { setUserId, setUserPages } = useContext(UserContext)
+
+    const [showPassword, setShowPassword] = useState(false)
 
     const saveRedirect = () => {
         if (redirect !== "") {
@@ -71,6 +74,7 @@ const Login = () => {
     return (
         <div className="flex justify-center items-center flex-col bg-bgcolor min-h-96">
             <h2 className="text-textcolor text-2xl my-5">Faça o seu login</h2>
+
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(handleLogin)}>
                     <FormField
@@ -87,19 +91,40 @@ const Login = () => {
                         )}
                     />
 
-                    <FormField
-                        control={form.control}
-                        name="password"
-                        render={({ field }) => (
-                            <FormItem className="text-textcolor">
-                                <FormLabel>Senha</FormLabel>
-                                <FormControl>
-                                    <Input placeholder="Digite sua senha" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
+                    
+                    <div className="relative">
+                        <FormField
+                            control={form.control}
+                            name="password"
+                            render={({ field }) => (
+                                <FormItem className="text-textcolor">
+                                    <FormLabel>Senha</FormLabel>
+                                    <FormControl>
+                                        <Input 
+                                            placeholder="Digite sua senha" 
+                                            type={ showPassword ? "text" : "password" } 
+                                            { ...field } 
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+
+                        <Button 
+                            type="button" 
+                            onClick={() => setShowPassword(!showPassword)} 
+                            variant="link"
+                            size="icon"
+                            className="text-textcolor absolute bottom-0 right-0"
+                        >
+                            {showPassword ? (
+                                <EyeOff className="h-4 w-4" />
+                            ) : (
+                                <Eye className="w-4 h-4" />
+                            )}
+                        </Button>
+                    </div>
 
                     <div className="flex justify-center mt-5">
                         {!loading ? (
