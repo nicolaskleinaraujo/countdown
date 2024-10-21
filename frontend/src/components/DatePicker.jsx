@@ -9,7 +9,6 @@ import {
 import { Calendar as CalendarIcon } from "lucide-react"
 
 // Modules
-import { useEffect, useState } from "react"
 import { format } from "date-fns"
 import { ptBR } from "date-fns/locale/pt-BR"
 import { cn } from "@/lib/utils"
@@ -20,7 +19,7 @@ const DatePicker = ({ date, setDate }) => {
             <PopoverTrigger asChild>
                 <Button
                     variant={ "outline" }
-                    className={ cn("w-[280px] justify-start text-left font-normal", !date && "text-muted-foreground") }
+                    className={ cn("w-full justify-start text-left font-normal", !date && "text-muted-foreground") }
                 >
                     <CalendarIcon className="mr-2 h-4 w-4" />
                     { 
