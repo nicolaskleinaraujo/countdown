@@ -10,10 +10,10 @@ const Navbar = () => {
     const { userId } = useContext(UserContext)
 
     return (
-        <nav className="flex flex-1 flex-row justify-between items-center bg-bgcolor2 border-b-2 p-3 text-textcolor">
+        <nav className="flex flex-1 flex-row justify-between items-center bg-bgcolor2 border-b-2 py-6 px-4 text-textcolor">
             <Link className="flex flex-row justify-center items-center ml-2" to={"/"}>
-                <Timer className="h-8 w-8 animate-pulse text-purple-400 mr-2" />
-                <span className="font-bold">Countdown</span>
+                <Timer className="h-8 w-8 animate-pulse text-purple-400 mr-1" />
+                <span className="font-bold text-xl">Countdown</span>
             </Link>
 
             <div className="flex flex-row justify-center items-center mr-2">
