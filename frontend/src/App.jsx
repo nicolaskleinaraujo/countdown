@@ -1,5 +1,5 @@
 // Modules
-import Router from './utils/router'
+import Router from './utils/Router'
 import dbFetch from './config/axios'
 import { useContext, useEffect } from 'react'
 import { UserContext } from './context/UserContext'
