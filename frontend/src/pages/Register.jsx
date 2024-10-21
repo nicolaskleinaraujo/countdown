@@ -3,6 +3,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { ReloadIcon } from "@radix-ui/react-icons"
+import { Eye, EyeOff } from "lucide-react"
 
 // Modules
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -29,6 +30,8 @@ const Register = () => {
 
     const { redirect, setRedirect } = useContext(RedirectContext)
     const { setUserId } = useContext(UserContext)
+
+    const [showPassword, setShowPassword] = useState(false)
 
     const saveRedirect = () => {
         if (redirect !== "") {
@@ -90,19 +93,39 @@ const Register = () => {
                         )}
                     />
 
-                    <FormField
-                        control={form.control}
-                        name="password"
-                        render={({ field }) => (
-                            <FormItem className="text-textcolor mb-5">
-                                <FormLabel>Senha</FormLabel>
-                                <FormControl>
-                                    <Input placeholder="Crie sua senha" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
+                    <div className="relative">
+                        <FormField
+                            control={form.control}
+                            name="password"
+                            render={({ field }) => (
+                                <FormItem className="text-textcolor mb-5">
+                                    <FormLabel>Senha</FormLabel>
+                                    <FormControl>
+                                        <Input 
+                                            placeholder="Crie sua senha" 
+                                            type={ showPassword ? "text" : "password" }
+                                            { ...field } 
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+
+                        <Button 
+                            type="button" 
+                            onClick={() => setShowPassword(!showPassword)} 
+                            variant="link"
+                            size="icon"
+                            className="text-textcolor absolute bottom-0 right-0"
+                        >
+                            {showPassword ? (
+                                <EyeOff className="h-4 w-4" />
+                            ) : (
+                                <Eye className="w-4 h-4" />
+                            )}
+                        </Button>
+                    </div>
 
                     <FormField
                         control={form.control}
