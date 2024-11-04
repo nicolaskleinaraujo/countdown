@@ -53,7 +53,7 @@ const Page = () => {
 
                 {!loading ? (
                     events.length !== 0 && events.map(event => (
-                        <Card className="bg-bgcolor mb-10 text-center" key={event.id}>
+                        <Card className="bg-bgcolor mb-10 mx-auto text-center w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl" key={event.id}>
                             <CardHeader>
                                 <CardTitle className="text-textcolor">{event.title}</CardTitle>
                             </CardHeader>
@@ -73,7 +73,7 @@ const Page = () => {
                                     )}
                                 </p>
                             </CardContent>
-                            <CardFooter className="justify-center">
+                            <CardFooter className="justify-center px-0">
                                 <p className="text-textcolor">{format(event.created_at, "dd/MM/yy")} - {format(event.starts_at, "dd/MM/yy")}</p>
                             </CardFooter>
                         </Card>
