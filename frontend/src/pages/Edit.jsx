@@ -57,8 +57,6 @@ const Edit = () => {
 
                     {!loading && (
                         <span className="flex opacity-0 absolute inset-0 group-hover:opacity-100 items-center justify-center ease-in-out duration-100">
-                            {/*<Label htmlFor="picture"><Pencil /></Label>
-                            <Input id="picture" onChange={(e) => setNewImage(e.target.files[0])} type="file" className="hidden" />*/}
                             <UpdateImage pageId={id} />
                         </span>
                     )}
@@ -66,7 +64,7 @@ const Edit = () => {
 
                 {!loading ? (
                     events.length !== 0 && events.map(event => (
-                        <Card className="bg-bgcolor mb-10 text-center" key={event.id}>
+                        <Card className="bg-bgcolor mb-10 mx-auto text-center w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl" key={event.id}>
                             <CardHeader>
                                 <CardTitle className="text-textcolor">{event.title}</CardTitle>
                             </CardHeader>
