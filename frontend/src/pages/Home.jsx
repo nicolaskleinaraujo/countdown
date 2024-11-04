@@ -39,14 +39,14 @@ const Home = () => {
 
                     { userPages.map(page => (
                         <Link to={`/pages/${page.id}`} key={page.id}>
-                            <Card className="flex flex-col justify-center items-center text-cent mx-5 mb-5 p-2 text-center shadow-2xl shadow-bgcolor2">
-                                <Avatar className="mx-auto w-28 h-28 border-2 border-bgcolor mt-3">
+                            <Card className="flex flex-col justify-center items-center mx-auto mb-5 p-2 text-center shadow-2xl shadow-bgcolor2 w-full max-w-72 sm:max-w-md md:max-w-lg lg:max-w-xl">
+                                <Avatar className="mx-auto w-28 h-28 border-2 border-bgcolor mt-3 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-52 lg:h-52">
                                     <AvatarImage src={`data:image/png;base64,${page.image.content}`} />
                                     <AvatarFallback>Imagem da Page</AvatarFallback>
                                 </Avatar>
 
                                 <CardHeader>
-                                    <CardTitle className="font-semibold">{page.title}</CardTitle>
+                                    <CardTitle className="font-semibold md:text-xl lg:text-2xl">{page.title}</CardTitle>
                                 </CardHeader>
                             </Card>
                         </Link>
