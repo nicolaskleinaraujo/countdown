@@ -75,7 +75,7 @@ const Register = () => {
 
     return (
         <div className="flex justify-center items-center flex-col bg-bgcolor min-h-[80vh]">
-            <h2 className="text-textcolor text-2xl my-5">Crie sua conta</h2>
+            <h2 className="text-textcolor text-2xl my-5 sm:text-3xl lg:text-4xl">Crie sua conta</h2>
 
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(handleCreate)}>
@@ -83,10 +83,10 @@ const Register = () => {
                         control={form.control}
                         name="email"
                         render={({ field }) => (
-                            <FormItem className="w-60 mb-5 text-textcolor">
-                                <FormLabel>Email</FormLabel>
+                            <FormItem className="w-60 mb-5 text-textcolor sm:w-80 lg:w-96">
+                                <FormLabel className="sm:text-lg lg:text-xl">Email</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Digite seu email" {...field} />
+                                    <Input placeholder="Digite seu email" {...field} className="shadow-md shadow-bgcolor2" />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -98,13 +98,14 @@ const Register = () => {
                             control={form.control}
                             name="password"
                             render={({ field }) => (
-                                <FormItem className="text-textcolor mb-5">
-                                    <FormLabel>Senha</FormLabel>
+                                <FormItem className="text-textcolor mb-5 sm:w-80 lg:w-96">
+                                    <FormLabel className="sm:text-lg lg:text-xl">Senha</FormLabel>
                                     <FormControl>
                                         <Input 
                                             placeholder="Crie sua senha" 
                                             type={ showPassword ? "text" : "password" }
-                                            { ...field } 
+                                            { ...field }
+                                            className="shadow-md shadow-bgcolor2" 
                                         />
                                     </FormControl>
                                     <FormMessage />
@@ -131,10 +132,10 @@ const Register = () => {
                         control={form.control}
                         name="nickname"
                         render={({ field }) => (
-                            <FormItem className="text-textcolor mb-5">
-                                <FormLabel>Nickname</FormLabel>
+                            <FormItem className="text-textcolor mb-7 sm:w-80 lg:w-96">
+                                <FormLabel className="sm:text-lg lg:text-xl">Nickname</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Crie seu nickname" {...field} />
+                                    <Input placeholder="Crie seu nickname" {...field} className="shadow-md shadow-bgcolor2" />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -154,9 +155,9 @@ const Register = () => {
                 </form>
             </Form>
 
-            <p className="text-textcolor my-5">
+            <p className="text-textcolor my-5 sm:text-lg lg:text-xl">
                 Já possui uma conta? 
-                <Button className="text-textcolor p-0 ml-1" variant="link">
+                <Button className="text-textcolor p-0 ml-1 sm:text-lg lg:text-xl" variant="link">
                     <Link onClick={() => setRedirect(getRedirect)} to={"/login"}>Entrar</Link>
                 </Button>
             </p>
