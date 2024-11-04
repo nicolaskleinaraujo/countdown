@@ -73,7 +73,7 @@ const Login = () => {
 
     return (
         <div className="flex justify-center items-center flex-col bg-bgcolor min-h-[80vh]">
-            <h2 className="text-textcolor text-2xl my-5">Faça o seu login</h2>
+            <h2 className="text-textcolor text-2xl my-5 sm:text-3xl lg:text-4xl">Faça o seu login</h2>
 
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(handleLogin)}>
@@ -81,10 +81,10 @@ const Login = () => {
                         control={form.control}
                         name="email"
                         render={({ field }) => (
-                            <FormItem className="w-60 mb-5 text-textcolor">
-                                <FormLabel>Email</FormLabel>
+                            <FormItem className="w-60 mb-5 text-textcolor sm:w-80 lg:w-96">
+                                <FormLabel className="sm:text-lg lg:text-xl">Email</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Digite seu email" {...field} />
+                                    <Input placeholder="Digite seu email" {...field} className="shadow-md shadow-bgcolor2" />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -97,13 +97,14 @@ const Login = () => {
                             control={form.control}
                             name="password"
                             render={({ field }) => (
-                                <FormItem className="text-textcolor">
-                                    <FormLabel>Senha</FormLabel>
+                                <FormItem className="w-60 mb-7 text-textcolor sm:w-80 lg:w-96">
+                                    <FormLabel className="sm:text-lg lg:text-xl">Senha</FormLabel>
                                     <FormControl>
                                         <Input 
                                             placeholder="Digite sua senha" 
                                             type={ showPassword ? "text" : "password" } 
                                             { ...field } 
+                                            className="shadow-md shadow-bgcolor2"
                                         />
                                     </FormControl>
                                     <FormMessage />
@@ -139,9 +140,9 @@ const Login = () => {
                 </form>
             </Form>
 
-            <p className="text-textcolor my-5">
+            <p className="text-textcolor my-5 sm:text-lg lg:text-xl">
                 Não tem uma conta? 
-                <Button className="text-textcolor p-0 ml-1" variant="link">
+                <Button className="text-textcolor p-0 ml-1 sm:text-lg lg:text-xl"  variant="link">
                     <Link onClick={() => setRedirect(getRedirect)} to={"/register"}>Criar</Link>
                 </Button>
             </p>
