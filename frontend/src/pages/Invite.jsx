@@ -46,7 +46,7 @@ const Invite = () => {
 
     return (
         <div className="flex flex-col justify-center items-center bg-bgcolor min-h-[80vh] py-40">
-            <Card className="w-10/12 text-center">
+            <Card className="w-10/12 text-center max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl shadow-2xl shadow-bgcolor2">
                 <CardHeader>
                     <CardTitle>Você foi convidado(a) para uma Page</CardTitle>
                 </CardHeader>
