@@ -60,7 +60,7 @@ const Page = () => {
                             <CardContent className="p-0 mb-6">
                                 <p className="text-textcolor">
                                     { diffDays(event.starts_at, Date.now()) < 0 ? (
-                                        `Foi a ${Math.abs(diffDays(event.starts_at, Date.now()))} dias`
+                                        `Ocorreu a ${Math.abs(diffDays(event.starts_at, Date.now()))} dias atrás`
                                     ) : (
                                         `Faltam ${diffDays(event.starts_at, Date.now())} dias`
                                     )}

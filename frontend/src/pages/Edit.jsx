@@ -69,8 +69,21 @@ const Edit = () => {
                                 <CardTitle className="text-textcolor">{event.title}</CardTitle>
                             </CardHeader>
                             <CardContent className="p-0 mb-6">
-                                <p className="text-textcolor">Faltam {diffDays(event.starts_at, Date.now())} dias</p>
-                                <p className="text-textcolor">{diffDays(event.starts_at, event.created_at) - diffDays(event.starts_at, Date.now())} dias já foram esperados</p>
+                                <p className="text-textcolor">
+                                    { diffDays(event.starts_at, Date.now()) < 0 ? (
+                                        `Ocorreu a ${Math.abs(diffDays(event.starts_at, Date.now()))} dias atrás`
+                                    ) : (
+                                        `Faltam ${diffDays(event.starts_at, Date.now())} dias`
+                                    )}
+                                </p>
+
+                                <p className="text-textcolor">
+                                    { diffDays(event.starts_at, Date.now()) < 0 ? (
+                                        `${(diffDays(event.starts_at, event.created_at) - diffDays(event.starts_at, Date.now())) - Math.abs(diffDays(event.starts_at, Date.now()))} dias foram esperados`
+                                    ) : (
+                                        `${diffDays(event.starts_at, event.created_at) - diffDays(event.starts_at, Date.now())} dias já foram esperados`
+                                    )}
+                                </p>
                             </CardContent>
                             <CardFooter className="justify-center">
                                 <p className="text-textcolor">{format(event.created_at, "dd/MM/yy")} - {format(event.starts_at, "dd/MM/yy")}</p>
