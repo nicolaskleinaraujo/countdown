@@ -16,8 +16,8 @@ const Home = () => {
         <div className="flex flex-col justify-center bg-bgcolor min-h-[80vh]">
             { userPages.length === 0 ? (
                 <>
-                    <div className="flex flex-col justify-center items-center text-textcolor text-center gap-8 mb-8 mx-5">
-                        <h1 className="font-bold text-3xl animate-pulse text-purple-400">Countdown</h1>
+                    <div className="flex flex-col justify-center items-center text-textcolor text-center gap-8 mb-8 mx-5 sm:text-lg md:text-xl lg:text-2xl">
+                        <h1 className="font-bold text-3xl animate-pulse text-purple-400 md:text-4xl lg:text-5xl">Countdown</h1>
                         <h2>Bem-vindo(a) ao <span className="animate-pulse text-purple-400">Countdown!</span></h2>
                         <p>Crie uma <span className="animate-pulse text-purple-400">Page</span> personalizada e compartilhe com pessoas você que ama!</p>
                         <p>Adicione datas importantes para tornar esta espera especial</p>
@@ -35,7 +35,7 @@ const Home = () => {
                 </>
             ) : (
                 <>
-                    <h1 className="font-bold text-3xl animate-pulse text-purple-400 text-center my-5">Countdown</h1>
+                    <h1 className="font-bold text-3xl animate-pulse text-purple-400 text-center my-8 md:text-4xl lg:text-5xl">Countdown</h1>
 
                     { userPages.map(page => (
                         <Link to={`/pages/${page.id}`} key={page.id}>
