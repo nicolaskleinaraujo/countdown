@@ -51,7 +51,7 @@ const ConfirmDelete = ({ eventId, pageId }) => {
         <div>
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
                 <DialogTrigger asChild>
-                    <Button variant="destructive">Excluir</Button>
+                    <Button variant="destructive" className="md:text-lg md:p-5">Excluir</Button>
                 </DialogTrigger>
 
                 <DialogContent className="max-w-md">

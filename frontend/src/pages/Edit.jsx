@@ -100,7 +100,7 @@ const Edit = () => {
                 )}
 
                 <div className="flex flex-row justify-center">
-                    <Button asChild>
+                    <Button asChild className="md:text-lg md:p-5">
                         <Link to={`/pages/${id}`}>Voltar</Link>
                     </Button>
                 </div>

@@ -59,7 +59,7 @@ const EditEvent = ({ eventId, pageId, infos }) => {
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
                 {/* TODO add zod validation */}
                 <DialogTrigger asChild>
-                    <Button className="mr-2">Editar</Button>
+                    <Button className="mr-2 md:text-lg md:p-5 md:mr-4">Editar</Button>
                 </DialogTrigger>
 
                 <DialogContent className="max-w-md">
