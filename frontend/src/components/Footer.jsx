@@ -46,7 +46,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className="my-8 pt-8 border-t text-sm text-center">
+            <div className="my-8 pt-8 border-t w-5/6 text-sm text-center md:text-base lg:text-lg">
                 <p>&copy; { new Date().getFullYear() } CountdownPro. Todos os direitos reservados.</p>
             </div>
         </footer>
