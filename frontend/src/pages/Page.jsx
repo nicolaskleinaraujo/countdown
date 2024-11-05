@@ -55,9 +55,9 @@ const Page = () => {
                     events.length !== 0 && events.map(event => (
                         <Card className="bg-bgcolor mb-10 mx-auto text-center w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl" key={event.id}>
                             <CardHeader>
-                                <CardTitle className="text-textcolor">{event.title}</CardTitle>
+                                <CardTitle className="text-textcolor md:text-xl lg:text-2xl">{event.title}</CardTitle>
                             </CardHeader>
-                            <CardContent className="p-0 mb-6">
+                            <CardContent className="p-0 mb-6 md:text-xl lg:text-2xl">
                                 <p className="text-textcolor">
                                     { diffDays(event.starts_at, Date.now()) < 0 ? (
                                         `Ocorreu a ${Math.abs(diffDays(event.starts_at, Date.now()))} dias atrás`
@@ -73,7 +73,7 @@ const Page = () => {
                                     )}
                                 </p>
                             </CardContent>
-                            <CardFooter className="justify-center px-0">
+                            <CardFooter className="justify-center px-0 md:text-xl lg:text-2xl">
                                 <p className="text-textcolor">{format(event.created_at, "dd/MM/yy")} - {format(event.starts_at, "dd/MM/yy")}</p>
                             </CardFooter>
                         </Card>
