@@ -58,7 +58,7 @@ const NewEvent = ({ pageId }) => {
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
                 {/* TODO add zod form */}
                 <DialogTrigger asChild>
-                    <Button>Novo evento</Button>
+                    <Button className="md:text-lg md:p-5">Novo evento</Button>
                 </DialogTrigger>
 
                 <DialogContent className="max-w-md">

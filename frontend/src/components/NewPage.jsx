@@ -63,7 +63,7 @@ const NewPage = () => {
                     { userPages.length !== 0 ? (
                         <Button className="md:text-lg md:p-5 md:my-3">Nova <span className="animate-pulse text-purple-400 ml-1">Page</span></Button>
                     ) : (
-                        <Button>Crie sua <span className="animate-pulse text-purple-400 ml-1">Page</span></Button>
+                        <Button className="md:text-lg md:p-5 md:my-3">Crie sua <span className="animate-pulse text-purple-400 ml-1">Page</span></Button>
                     )}
                 </DialogTrigger>
 
