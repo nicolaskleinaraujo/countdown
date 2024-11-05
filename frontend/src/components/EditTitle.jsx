@@ -55,7 +55,7 @@ const EditTitle = ({ pageId, info }) => {
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
                 {/* TODO add zod validation */}
                 <DialogTrigger asChild>
-                    <Button className="text-textcolor mb-10" variant="link">Editar</Button>
+                    <Button className="text-textcolor mb-10 md:text-lg md:p-5" variant="link">Editar</Button>
                 </DialogTrigger>
 
                 <DialogContent className="max-w-md">

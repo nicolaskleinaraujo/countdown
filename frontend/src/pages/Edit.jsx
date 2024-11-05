@@ -26,8 +26,6 @@ const Edit = () => {
     const [image, setImage] = useState("")
     const [events, setEvents] = useState([])
 
-    const [newImage, setNewImage] = useState()
-
     const getPage = async() => {
         setLoading(true)
 
