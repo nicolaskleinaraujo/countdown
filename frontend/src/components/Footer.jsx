@@ -10,12 +10,12 @@ const Footer = () => {
     return (
         <footer className="flex flex-col justify-center items-center bg-bgcolor2 text-textcolor border-t-2">
             <Link className="flex flex-row justify-center items-center my-8" to={"/"}>
-                <Timer className="h-8 w-8 animate-pulse text-purple-400 mr-2" />
-                <span className="text-lg font-bold">Countdown</span>
+                <Timer className="h-8 w-8 animate-pulse text-purple-400 mr-2 md:h-10 md:w-10 lg:h-12 lg:w-12" />
+                <span className="text-xl font-bold md:text-2xl lg:text-3xl">Countdown</span>
             </Link>
 
             <div className="text-center mx-5 mb-8">
-                <h2 className="text-lg font-bold mb-3">Sobre o projeto</h2>
+                <h2 className="text-lg font-bold mb-3 md:text-xl">Sobre o projeto</h2>
 
                 <p>
                     Este site é apenas um projeto feito por <a href="https://github.com/nicolaskleinaraujo" target="_blank" className="underline">Nicolas Klein</a> como objeto de estudo. Sinta-se livre para utilizar os recursos com moderação e consciência.
