@@ -15,9 +15,9 @@ const Footer = () => {
             </Link>
 
             <div className="text-center mx-5 mb-8">
-                <h2 className="text-lg font-bold mb-3 md:text-xl">Sobre o projeto</h2>
+                <h2 className="text-lg font-bold mb-3 md:text-xl lg:text-2xl">Sobre o projeto</h2>
 
-                <p>
+                <p className="md:text-lg md:max-w-3xl lg:text-xl lg:max-w-4xl">
                     Este site é apenas um projeto feito por <a href="https://github.com/nicolaskleinaraujo" target="_blank" className="underline">Nicolas Klein</a> como objeto de estudo. Sinta-se livre para utilizar os recursos com moderação e consciência.
                 </p>
             </div>
