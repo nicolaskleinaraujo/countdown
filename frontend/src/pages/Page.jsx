@@ -42,7 +42,7 @@ const Page = () => {
 
     return (
         <div className="flex flex-col justify-center items-center">
-            <div className="flex flex-col justify-center bg-bgcolor p-10 w-screen min-h-[80vh]">
+            <div className="flex flex-col justify-center bg-bgcolor p-10 min-h-[80vh] w-full">
                 <h1 className="text-center mb-10 font-bold text-lg animate-pulse text-purple-400 md:text-2xl lg:text-3xl">
                     {!loading ? title : <Skeleton className="h-6 w-56 mx-auto bg-neutral-800" /> }
                 </h1>
