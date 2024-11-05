@@ -56,7 +56,7 @@ const UpdateUser = () => {
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
                 {/* TODO add zod validation */}
                 <DialogTrigger asChild>
-                    <Button>Mudar Informações</Button>
+                    <Button className="md:text-lg md:p-5">Mudar Informações</Button>
                 </DialogTrigger>
 
                 <DialogContent className="max-w-md">

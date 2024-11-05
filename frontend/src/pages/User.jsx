@@ -42,7 +42,7 @@ const User = () => {
                 <>
                     <UpdateUser />
                     <DeleteAccount />
-                    <Button onClick={() => deAuth()}>Sair</Button>
+                    <Button onClick={() => deAuth()} className="md:text-lg md:p-5">Sair</Button>
                 </>
             ) : (
                 <>

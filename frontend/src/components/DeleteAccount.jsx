@@ -54,7 +54,7 @@ const DeleteAccount = () => {
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
                 {/* TODO add zod validation */}
                 <DialogTrigger asChild>
-                    <Button variant="destructive">Deletar conta</Button>
+                    <Button variant="destructive" className="md:text-lg md:p-5">Deletar conta</Button>
                 </DialogTrigger>
 
                 <DialogContent className="max-w-md">
