@@ -23,24 +23,24 @@ const Footer = () => {
             </div>
 
             <div className="flex flex-col justify-center items-center gap-3">
-                <h2 className="text-lg font-bold">Minhas redes</h2>
+                <h2 className="text-lg font-bold md:text-xl lg:text-2xl">Minhas redes</h2>
 
                 <div>
                     <Button variant="ghost" size="icon" className="mr-3">
                         <a href="https://github.com/nicolaskleinaraujo/" target="_blank">
-                            <GitHubLogoIcon className="h-5 w-5" />
+                            <GitHubLogoIcon className="h-5 w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
                         </a>
                     </Button>
 
                     <Button variant="ghost" size="icon" className="mr-3">
                         <a href="https://www.linkedin.com/in/nicolaskleinaraujo/" target="_blank">
-                            <LinkedInLogoIcon className="h-5 w-5" />
+                            <LinkedInLogoIcon className="h-5 w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
                         </a>
                     </Button>
 
                     <Button variant="ghost" size="icon">
                         <a href="https://nkportfolio.tech/" target="_blank">
-                            <ReaderIcon className="h-5 w-5" />
+                            <ReaderIcon className="h-5 w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
                         </a>
                     </Button>
                 </div>
