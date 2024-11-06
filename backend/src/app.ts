@@ -7,6 +7,7 @@ const app: Application = express()
 // Routers
 import usersRouter from "./routes/users"
 import pagesRouter from "./routes/pages"
+import spotifyRouter from "./routes/spotify"
 
 // Configs
 app.use(cookieParser(process.env.COOKIE_PARSER_SECRET))
@@ -24,5 +25,6 @@ app.get("/", (req: Request, res: Response) => {
 })
 app.use("/users", usersRouter)
 app.use("/pages", pagesRouter)
+app.use("/spotify", spotifyRouter)
 
 export default app
