@@ -14,6 +14,7 @@ import Invite from "@/pages/Invite"
 import Register from "@/pages/Register"
 import UserRoute from "./UserRoute"
 import User from "@/pages/User"
+import SpotifyCallback from "@/pages/SpotifyCallback"
 
 const Router = () => {
     return (
@@ -24,6 +25,7 @@ const Router = () => {
                     <Route path="/" element={ <Home /> } />
                     <Route path="/login" element={ <Login /> } />
                     <Route path="/register" element={ <Register /> } />
+                    <Route path="/spotify/callback" element={ <SpotifyCallback /> } />
 
                     <Route element={ <UserRoute /> }>
                         <Route path="/pages/:id" element={ <Page /> } />
