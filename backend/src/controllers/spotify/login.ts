@@ -8,5 +8,5 @@ export const login = async(req: Request, res: Response) => {
         redirect_uri: "http://localhost:5173",
     })
 
-    res.status(200).json({ spotifyUri: `https://accounts.spotify.com/authorize?${query}` })
+    res.status(202).json({ spotifyUri: `https://accounts.spotify.com/authorize?${query}` })
 }
