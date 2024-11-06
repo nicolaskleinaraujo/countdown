@@ -11,7 +11,7 @@ interface ISpotifyRes {
 const spotifyToken = async(code: string): Promise<ISpotifyRes> => {
     const data: string = querystring.stringify({
         code: code,
-        redirect_uri: process.env.ORIGIN_URL,
+        redirect_uri: `${process.env.ORIGIN_URL}/spotify/callback`,
         grant_type: "authorization_code"
     })
 
