@@ -1,15 +1,13 @@
 // Components
 import { Avatar, AvatarImage } from "@/components/ui/avatar"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Label } from "@/components/ui/label"
-import { Pencil } from "lucide-react"
 import { Skeleton } from "@/components/ui/skeleton"
 import ConfirmDelete from "@/components/ConfirmDelete"
 import EditEvent from "@/components/EditEvent"
 import EditTitle from "@/components/EditTitle"
 import UpdateImage from "@/components/UpdateImage"
+import SpotifySearch from "@/components/SpotifySearch"
 
 // Modules
 import { Link, useParams } from "react-router-dom"
@@ -47,8 +45,12 @@ const Edit = () => {
     return (
         <div className="flex flex-col justify-center items-center">
             <div className="flex flex-col justify-center bg-bgcolor p-10 min-h-[80vh] w-full">
-                <h1 className="text-center text-textcolor text-lg md:text-2xl lg:text-3xl">{!loading ? title : <Skeleton className="h-6 w-56 mx-auto bg-neutral-800" /> }</h1>
+                <h1 className="text-center text-textcolor text-lg md:text-2xl lg:text-3xl">
+                    {!loading ? title : <Skeleton className="h-6 w-56 mx-auto bg-neutral-800" /> }
+                </h1>
                 { !loading ? <EditTitle pageId={id} info={title} /> : <Skeleton className="h-6 w-24 bg-neutral-800 mx-auto mt-3 mb-10" /> }
+
+                <SpotifySearch />
 
                 <Avatar className="group mb-10 mx-auto w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72">
                     {!loading ? <AvatarImage src={image} className="group-hover:blur-md ease-in-out duration-100"  /> : <Skeleton className="w-44 h-44 bg-neutral-800" />}

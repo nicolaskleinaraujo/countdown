@@ -40,7 +40,7 @@ const SpotifySearch = () => {
 
     return (
         <div className="w-64 mx-auto mb-10">
-            <div className="flex justify-center items-center relative">
+            <div className="relative">
                 <Search className="absolute left-2 top-2.5 h-4 w-4 text-bgcolor3" />
 
                 <Input
