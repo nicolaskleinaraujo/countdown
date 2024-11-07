@@ -16,6 +16,7 @@ export default {
         "bgcolor": "#09090B",
         "textcolor": "#FAFAFA",
         "bgcolor2": "#1A1A2E",
+        "bgcolor3": "#0F4F3D",
       }
     }
   },
