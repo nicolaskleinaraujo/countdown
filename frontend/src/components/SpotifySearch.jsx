@@ -12,6 +12,8 @@ const SpotifySearch = () => {
     const [searchQuery, setSearchQuery] = useState("")
     const [tracks, setTracks] = useState([])
 
+    const [focus, setFocus] = useState(false)
+
     const { userId } = useContext(UserContext)
 
     const searchTracks = async() => {
@@ -48,26 +50,28 @@ const SpotifySearch = () => {
                     placeholder="Pesquisar musica"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-8 mb-2 shadow-lg shadow-bgcolor3"
+                    onMouseEnter={() => setFocus(true)} 
+                    onMouseLeave={() => setFocus(false)} 
+                    className="pl-8 mb-3 shadow-lg shadow-bgcolor3" 
                 />
             </div>
 
             <div>
-                {searchQuery && (
+                {searchQuery && focus && (
                     <Card>
                         <CardContent className="p-0">
                             {tracks.length > 0 ? (
                                 <ul className="divide-y">
                                     {tracks.map(track => (
-                                        <li key={track.id} className="px-4 py-2 ease-in-out hover:bg-bgcolor3">
-                                            <button onClick={() => changePageMusic(track.id)}>
+                                        <li key={track.id} className="px-4 py-2 ease-in-out">
+                                            <button onClick={() => changePageMusic(track.id)} className="text-left">
                                                 {`${track.name} - ${track.artists[0].name}`}
                                             </button>
                                         </li>
                                     ))}
                                 </ul>
                             ) : (
-                                <p className="p-4 text-center text-muted-foreground">Nenhuma musica encontrada</p>
+                                <p className="p-4 text-center">Nenhuma musica encontrada</p>
                             )}
                         </CardContent>
                     </Card>
