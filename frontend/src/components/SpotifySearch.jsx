@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 // Modules
 import { useContext, useEffect, useState } from "react"
 import { UserContext } from "@/context/UserContext"
+import { toast } from "react-toastify"
 import dbFetch from "@/config/axios"
 
 const SpotifySearch = () => {
@@ -28,7 +29,11 @@ const SpotifySearch = () => {
 
             setTracks(res.data.tracks.tracks.items)
         } catch (error) {
-            console.log(error)
+            if (error.response.data.error.message === "Request failed with status code 401") {
+                return console.log("Request new token")
+            }
+
+            toast.error("Erro interno, tente novamente")
         }
     }
 
