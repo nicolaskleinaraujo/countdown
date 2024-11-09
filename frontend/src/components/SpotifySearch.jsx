@@ -2,6 +2,7 @@
 import { Input } from "@/components/ui/input"
 import { Search } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
+import { Skeleton } from "@/components/ui/skeleton"
 
 // Modules
 import { useContext, useEffect, useState } from "react"
@@ -14,8 +15,9 @@ const SpotifySearch = () => {
     const [tracks, setTracks] = useState([])
 
     const [focus, setFocus] = useState(false)
+    const [loading, setLoading] = useState(true)
 
-    const { userId } = useContext(UserContext)
+    const { userId, spotifySync, setSpotifySync } = useContext(UserContext)
 
     const searchTracks = async() => {
         if (searchQuery === "") {
@@ -28,9 +30,9 @@ const SpotifySearch = () => {
             })
 
             setTracks(res.data.tracks.tracks.items)
+            setLoading(false)
         } catch (error) {
             if (error.response.data.error.message === "Request failed with status code 401") {
-                console.log("teste")
                 requestNewAccess()
                 return
             }
@@ -41,10 +43,15 @@ const SpotifySearch = () => {
 
     const requestNewAccess = async() => {
         try {
-            const res = await dbFetch.post("/spotify/refresh", {}, {
+            setLoading(true)
+
+            await dbFetch.post("/spotify/refresh", {}, {
                 headers: { "userId": userId },
             })
+
+            searchTracks()
         } catch (error) {
+            setLoading(false)
             console.log(error)
         }
     }
@@ -64,7 +71,7 @@ const SpotifySearch = () => {
 
                 <Input
                     type="search"
-                    placeholder="Pesquisar musica"
+                    placeholder="Pesquisar no Spotify"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     onMouseEnter={() => setFocus(true)} 
@@ -77,7 +84,9 @@ const SpotifySearch = () => {
                 {searchQuery && focus && (
                     <Card>
                         <CardContent className="p-0">
-                            {tracks.length > 0 ? (
+                            { loading && <Skeleton className="h-72 w-64 mx-auto bg-neutral-800" /> }
+
+                            {!loading && tracks.length > 0 && (
                                 <ul className="divide-y">
                                     {tracks.map(track => (
                                         <li key={track.id} className="px-4 py-2 ease-in-out">
@@ -87,8 +96,6 @@ const SpotifySearch = () => {
                                         </li>
                                     ))}
                                 </ul>
-                            ) : (
-                                <p className="p-4 text-center">Nenhuma musica encontrada</p>
                             )}
                         </CardContent>
                     </Card>
