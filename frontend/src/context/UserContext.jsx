@@ -8,9 +8,10 @@ export const UserContext = createContext()
 export const UserProvider = ({ children }) => {
     const [userId, setUserId] = useState(0)
     const [userPages, setUserPages] = useState([])
+    const [spotifySync, setSpotifySync] = useState(false)
 
     return (
-        <UserContext.Provider value={{ userId, setUserId, userPages, setUserPages }}>
+        <UserContext.Provider value={{ userId, setUserId, userPages, setUserPages, spotifySync, setSpotifySync }}>
             {children}
         </UserContext.Provider>
     )
