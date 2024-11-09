@@ -30,10 +30,22 @@ const SpotifySearch = () => {
             setTracks(res.data.tracks.tracks.items)
         } catch (error) {
             if (error.response.data.error.message === "Request failed with status code 401") {
-                return console.log("Request new token")
+                console.log("teste")
+                requestNewAccess()
+                return
             }
 
             toast.error("Erro interno, tente novamente")
+        }
+    }
+
+    const requestNewAccess = async() => {
+        try {
+            const res = await dbFetch.post("/spotify/refresh", {}, {
+                headers: { "userId": userId },
+            })
+        } catch (error) {
+            console.log(error)
         }
     }
 
