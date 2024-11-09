@@ -12,7 +12,14 @@ export const refreshToken = async(req: Request, res: Response): Promise<void> =>
 
         const response = await spotifyRefreshToken(spotifyRefresh)
 
-        console.log(response)
+        res.cookie("spotifyAccess", response.access_token, {
+            httpOnly: true,
+            signed: true,
+            secure: true,
+            sameSite: "none",
+        })
+
+        res.status(200).json({ msg: "Access Token atualizado" })
     } catch (error) {
         res.status(500).json({ msg: "Erro interno, tente novamente", error })
     }
