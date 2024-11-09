@@ -12,13 +12,9 @@ const SpotifyCallback = () => {
 
     const [getRedirect, setGetRedirect] = useState("")
     const { setSpotifySync } = useContext(UserContext)
-    const { redirect, setRedirect } = useContext(RedirectContext)
 
     const saveRedirect = () => {
-        if (redirect !== "") {
-            setGetRedirect(redirect)
-            setRedirect("")
-        }
+        
     }
 
     const getSpotifyTokens = async() => {
@@ -26,9 +22,17 @@ const SpotifyCallback = () => {
             const res = await dbFetch.post(`/spotify/callback?code=${searchParams.get("code")}`)
 
             toast.success(res.data.msg)
-            navigate(getRedirect)
-        } catch (error) {
             setSpotifySync(true)
+
+            const redirect = sessionStorage.getItem("spotifyCallbackPage")
+            if (redirect !== null) {
+                navigate(redirect)
+            } else if (redirect === null) (
+                navigate("/")
+            )
+        } catch (error) {
+            toast.error("Erro interno, tente novamente")
+            navigate("/")
         }
     }
 

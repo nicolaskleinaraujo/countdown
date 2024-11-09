@@ -29,6 +29,7 @@ const SpotifySearch = () => {
                 headers: { "userId": userId }
             })
 
+            sessionStorage.setItem("spotifyCallbackPage", location.pathname)
             window.open(res.data.spotifyUri, "_self")
         } catch (error) {
             toast.error("Erro interno, tente novamente")
