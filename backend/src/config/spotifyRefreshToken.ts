@@ -5,10 +5,10 @@ interface ISpotifyRes {
     access_token: string
     token_type: string
     expires_in: number
-    refresh_token: string
+    scope: string
 }
 
-const spotifyRefresh = async(token: string) => {
+const spotifyRefreshToken = async(token: string): Promise<ISpotifyRes> => {
     const data: string = querystring.stringify({
         grant_type: "refresh_token",
         refresh_token: token,
@@ -24,4 +24,4 @@ const spotifyRefresh = async(token: string) => {
     return spotifyRes.data
 }
 
-export default spotifyRefresh
+export default spotifyRefreshToken
