@@ -1,6 +1,7 @@
 // Modules
 import dbFetch from "@/config/axios"
 import { RedirectContext } from "@/context/RedirectContext"
+import { UserContext } from "@/context/UserContext"
 import { useContext, useEffect, useState } from "react"
 import { useNavigate, useSearchParams } from "react-router-dom"
 import { toast } from "react-toastify"
@@ -10,6 +11,7 @@ const SpotifyCallback = () => {
     const [searchParams] = useSearchParams()
 
     const [getRedirect, setGetRedirect] = useState("")
+    const { setSpotifySync } = useContext(UserContext)
     const { redirect, setRedirect } = useContext(RedirectContext)
 
     const saveRedirect = () => {
@@ -26,7 +28,7 @@ const SpotifyCallback = () => {
             toast.success(res.data.msg)
             navigate(getRedirect)
         } catch (error) {
-            console.log(error)
+            setSpotifySync(true)
         }
     }
 

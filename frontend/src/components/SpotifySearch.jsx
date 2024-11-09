@@ -41,6 +41,8 @@ const SpotifySearch = () => {
         } 
 
         try {
+            setLoading(true)
+
             const res = await dbFetch.get(`/spotify/search?q=${searchQuery}`, {
                 headers: { "userId": userId },
             })
