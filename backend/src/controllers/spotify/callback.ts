@@ -7,7 +7,7 @@ interface Info {
 }
 
 const InfoSchema = z.object({
-    code: z.string().trim().max(200),
+    code: z.string().trim(),
 })
 
 export const callback = async(req: Request, res: Response): Promise<void> => {
