@@ -84,20 +84,20 @@ const SpotifySearch = () => {
     }, [searchQuery])
 
     return (
-        <div className="mx-auto mb-10 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl">
+        <div className="mx-auto mb-10 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl md:text-xl lg:text-2xl">
             { !spotifySync && (
                 <Card className="shadow-xl shadow-bgcolor3 text-center">
                     <CardHeader>
-                        <CardTitle>Faça login no <span className="text-bgcolor3">Spotify</span></CardTitle>
+                        <CardTitle className="md:text-2xl lg:text-3xl">Faça login no <span className="text-bgcolor3">Spotify</span></CardTitle>
                     </CardHeader>
 
                     <CardContent className="p-3">
-                        <CardDescription>Faça login no <span className="text-bgcolor3">Spotify</span> e escolha a musica perfeita para sua <span className="animate-pulse text-purple-400">Page</span></CardDescription>
+                        <CardDescription className="md:text-xl lg:text-2xl">Faça login no <span className="text-bgcolor3">Spotify</span> e escolha a musica perfeita para sua <span className="animate-pulse text-purple-400">Page</span></CardDescription>
                     </CardContent>
 
                     <CardFooter className="justify-center">
                         { !loading ? (
-                            <Button onClick={() => handleSpotifyLogin()} variant="link">Login</Button>
+                            <Button onClick={() => handleSpotifyLogin()} variant="link" className="md:text-lg lg:text-xl">Login</Button>
                         ) : (
                             <Button disabled><ReloadIcon className="h-4 w-4 animate-spin" /></Button>
                         )}
@@ -108,7 +108,7 @@ const SpotifySearch = () => {
             { spotifySync && (
                 <>
                     <div className="relative">
-                        <Search className="absolute left-2 top-2.5 h-4 w-4 text-bgcolor3" />
+                        <Search className="absolute left-2 top-2.5 h-4 w-4 text-bgcolor3 md:h-5 md:w-5 lg:top-3.5" />
 
                         <Input
                             type="search"
@@ -117,7 +117,7 @@ const SpotifySearch = () => {
                             onChange={(e) => setSearchQuery(e.target.value)}
                             onMouseEnter={() => setFocus(true)} 
                             onMouseLeave={() => setFocus(false)} 
-                            className="pl-8 mb-3 shadow-lg shadow-bgcolor3" 
+                            className="pl-8 mb-3 shadow-lg shadow-bgcolor3 md:text-lg md:py-5 lg:text-xl lg:py-6" 
                         />
                     </div>
 
