@@ -97,18 +97,18 @@ const SpotifySearch = ({ pageId }) => {
     return (
         <div className="mx-auto mb-10 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl md:text-xl lg:text-2xl text-textcolor">
             { !spotifySync && (
-                <Card className="shadow-xl shadow-bgcolor3 text-center">
+                <Card className="shadow-xl shadow-bgcolor3 text-center bg-bgcolor text-textcolor">
                     <CardHeader>
-                        <CardTitle className="md:text-2xl lg:text-3xl">Faça login no <span className="text-bgcolor3">Spotify</span></CardTitle>
+                        <CardTitle className="md:text-2xl lg:text-3xl text-textcolor">Faça login no <span className="text-bgcolor3">Spotify</span></CardTitle>
                     </CardHeader>
 
                     <CardContent className="p-3">
-                        <CardDescription className="md:text-xl lg:text-2xl">Faça login no <span className="text-bgcolor3">Spotify</span> e escolha a musica perfeita para sua <span className="animate-pulse text-purple-400">Page</span></CardDescription>
+                        <CardDescription className="md:text-xl lg:text-2xl text-textcolor">Faça login no <span className="text-bgcolor3">Spotify</span> e escolha a musica perfeita para sua <span className="animate-pulse text-purple-400">Page</span></CardDescription>
                     </CardContent>
 
                     <CardFooter className="justify-center">
                         { !loading ? (
-                            <Button onClick={() => handleSpotifyLogin()} variant="link" className="md:text-lg lg:text-xl">Login</Button>
+                            <Button onClick={() => handleSpotifyLogin()} variant="link" className="md:text-lg lg:text-xl text-textcolor">Login</Button>
                         ) : (
                             <Button disabled><ReloadIcon className="h-4 w-4 animate-spin" /></Button>
                         )}
@@ -139,10 +139,10 @@ const SpotifySearch = ({ pageId }) => {
                                     }
 
                                     {!loading && tracks.length > 0 && (
-                                        <ul className="divide-y">
+                                        <ul className="divide-y text-textcolor">
                                             {tracks.map(track => (
-                                                <li key={track.id} className="px-4 py-3 ease-in-out">
-                                                    <button onClick={() => changePageMusic(track.id)} className="text-left">
+                                                <li key={track.id} className="px-4 py-3 ease-in-out text-textcolor">
+                                                    <button onClick={() => changePageMusic(track.id)} className="text-left text-textcolor">
                                                         {`${track.name} - ${track.artists[0].name}`}
                                                     </button>
                                                 </li>
