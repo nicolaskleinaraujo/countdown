@@ -17,5 +17,6 @@ pagesRouter.route("/title").patch(validateToken, (req: Request, res: Response) =
 pagesRouter.route("/:id").get(validateToken, (req: Request, res: Response) => pageController.getPage(req, res))
 pagesRouter.route("/invite/:invite").get(validateToken, (req: Request, res: Response) => pageController.invitePage(req, res))
 pagesRouter.route("/invite").post(validateToken, (req: Request, res: Response) => pageController.createInvite(req, res))
+pagesRouter.route("/music").patch(validateToken, (req: Request, res: Response) => pageController.updateMusic(req, res))
 
 export default pagesRouter

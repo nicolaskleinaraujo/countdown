@@ -12,7 +12,7 @@ const InfosSchema = z.object({
     id: z.number()
 })
 
-const updateMusic = async(req: Request, res: Response): Promise<void> => {
+export const updateMusic = async(req: Request, res: Response): Promise<void> => {
     try {
         const { musicId, id }: Infos = InfosSchema.parse(req.body)
 

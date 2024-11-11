@@ -6,6 +6,7 @@ import { deleteEvent } from "./deleteEvent"
 import { getPage } from "./getPage"
 import { invitePage } from "./invitePage"
 import { updateEvent } from "./updateEvent"
+import { updateMusic } from "./updateMusic"
 import { updatePageImage } from "./updatePageImage"
 import { updatePageTitle } from "./updatePageTitle"
 
@@ -19,4 +20,5 @@ export const pageController = {
     getPage,
     invitePage,
     createInvite,
+    updateMusic,
 }
