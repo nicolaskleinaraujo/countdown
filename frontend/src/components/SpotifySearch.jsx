@@ -95,7 +95,7 @@ const SpotifySearch = ({ pageId }) => {
     }, [searchQuery])
 
     return (
-        <div className="mx-auto mb-10 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl md:text-xl lg:text-2xl">
+        <div className="mx-auto mb-10 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl md:text-xl lg:text-2xl text-textcolor">
             { !spotifySync && (
                 <Card className="shadow-xl shadow-bgcolor3 text-center">
                     <CardHeader>
