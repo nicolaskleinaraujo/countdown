@@ -16,9 +16,12 @@ import Share from "@/components/Share"
 const Page = () => {
     const { id } = useParams()
     const { userPages } = useContext(UserContext)
+
     const [loading, setLoading] = useState(false)
+    const [musicLoading, setMusicLoading] = useState(true)
 
     const [title, setTitle] = useState("")
+    const [music, setMusic] = useState("")
     const [image, setImage] = useState("")
     const [events, setEvents] = useState([])
 
@@ -29,6 +32,7 @@ const Page = () => {
             const currentPage = userPages.filter(page => page.id == id)[0]
 
             setTitle(currentPage.title)
+            setMusic(currentPage.musicId)
             setImage(`data:image/png;base64,${currentPage.image.content}`)
             setEvents(currentPage.Events)
 
@@ -46,6 +50,14 @@ const Page = () => {
                 <h1 className="text-center mb-10 font-bold text-lg animate-pulse text-purple-400 md:text-2xl lg:text-3xl">
                     {!loading ? title : <Skeleton className="h-6 w-56 mx-auto bg-neutral-800" /> }
                 </h1>
+
+                { music != null && (
+                    <iframe 
+                        src={`https://open.spotify.com/embed/track/${music}?theme=0`} 
+                        onLoad={() => setMusicLoading(false)} 
+                        className={ musicLoading ? "hidden" : "block" && "h-20 mb-10"}
+                    ></iframe>
+                )}
 
                 <Avatar className="mb-10 mx-auto w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72">
                     {!loading ? <AvatarImage src={image} /> : <Skeleton className="w-44 h-44 bg-neutral-800" />}
