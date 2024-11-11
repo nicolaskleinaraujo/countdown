@@ -50,7 +50,7 @@ const Edit = () => {
                 </h1>
                 { !loading ? <EditTitle pageId={id} info={title} /> : <Skeleton className="h-6 w-24 bg-neutral-800 mx-auto mt-3 mb-10" /> }
 
-                <SpotifySearch />
+                <SpotifySearch pageId={id} />
 
                 <Avatar className="group mb-10 mx-auto w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72">
                     {!loading ? <AvatarImage src={image} className="group-hover:blur-md ease-in-out duration-100"  /> : <Skeleton className="w-44 h-44 bg-neutral-800" />}

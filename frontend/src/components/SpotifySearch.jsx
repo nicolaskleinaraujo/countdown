@@ -12,7 +12,7 @@ import { UserContext } from "@/context/UserContext"
 import { toast } from "react-toastify"
 import dbFetch from "@/config/axios"
 
-const SpotifySearch = () => {
+const SpotifySearch = ({ pageId }) => {
     const [searchQuery, setSearchQuery] = useState("")
     const [tracks, setTracks] = useState([])
 
@@ -73,8 +73,17 @@ const SpotifySearch = () => {
         }
     }
 
-    const changePageMusic = async(id) => {
-        console.log("Changed to " + id)
+    const changePageMusic = async(musicId) => {
+        try {
+            const res = await dbFetch.patch("/pages/music", {
+                musicId: musicId,
+                id: parseInt(pageId)
+            }, { headers: { "userId": userId } })
+
+            console.log(res.data)
+        } catch (error) {
+            toast.error("Erro interno, tente novamente")
+        }
     }
 
     useEffect(() => {
