@@ -84,7 +84,7 @@ const SpotifySearch = () => {
     }, [searchQuery])
 
     return (
-        <div className="w-64 mx-auto mb-10">
+        <div className="mx-auto mb-10 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl">
             { !spotifySync && (
                 <Card className="shadow-xl shadow-bgcolor3 text-center">
                     <CardHeader>
@@ -125,7 +125,9 @@ const SpotifySearch = () => {
                         {searchQuery && focus && (
                             <Card>
                                 <CardContent className="p-0">
-                                    { loading && <Skeleton className="h-72 w-64 mx-auto bg-neutral-800" /> }
+                                    { loading && 
+                                        <Skeleton className="h-72 mx-auto bg-neutral-800 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl" /> 
+                                    }
 
                                     {!loading && tracks.length > 0 && (
                                         <ul className="divide-y">
