@@ -141,7 +141,7 @@ const SpotifySearch = ({ pageId }) => {
                                     {!loading && tracks.length > 0 && (
                                         <ul className="divide-y text-textcolor">
                                             {tracks.map(track => (
-                                                <li key={track.id} className="px-4 py-3 ease-in-out bg-bgcolor text-textcolor">
+                                                <li key={track.id} className="px-4 py-3 ease-in-out bg-bgcolor rounded-xl text-textcolor">
                                                     <button onClick={() => changePageMusic(track.id)} className="text-left text-textcolor">
                                                         {`${track.name} - ${track.artists[0].name}`}
                                                     </button>
