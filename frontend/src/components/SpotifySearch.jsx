@@ -17,7 +17,7 @@ const SpotifySearch = ({ pageId }) => {
     const [tracks, setTracks] = useState([])
 
     const [loading, setLoading] = useState(false)
-    const { userId, spotifySync, setSpotifySync } = useContext(UserContext)
+    const { userId, userPages, setUserPages, spotifySync, setSpotifySync } = useContext(UserContext)
 
     const handleSpotifyLogin = async() => {
         try {
@@ -80,7 +80,11 @@ const SpotifySearch = ({ pageId }) => {
                 id: parseInt(pageId)
             }, { headers: { "userId": userId } })
 
-            console.log(res.data)
+            const updatedPages = userPages.filter(page => page.id != pageId)
+            updatedPages.push(res.data.updatedPage)
+            setUserPages(updatedPages)
+
+            toast.success(res.data.msg)
         } catch (error) {
             toast.error("Erro interno, tente novamente")
         }
