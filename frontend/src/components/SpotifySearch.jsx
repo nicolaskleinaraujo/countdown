@@ -16,9 +16,7 @@ const SpotifySearch = () => {
     const [searchQuery, setSearchQuery] = useState("")
     const [tracks, setTracks] = useState([])
 
-    const [focus, setFocus] = useState(false)
     const [loading, setLoading] = useState(false)
-
     const { userId, spotifySync, setSpotifySync } = useContext(UserContext)
 
     const handleSpotifyLogin = async() => {
@@ -115,14 +113,12 @@ const SpotifySearch = () => {
                             placeholder="Pesquisar no Spotify"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            onMouseEnter={() => setFocus(true)} 
-                            onMouseLeave={() => setFocus(false)} 
                             className="pl-8 mb-3 shadow-lg shadow-bgcolor3 md:text-lg md:py-5 lg:text-xl lg:py-6" 
                         />
                     </div>
 
                     <div>
-                        {searchQuery && focus && (
+                        {searchQuery && (
                             <Card>
                                 <CardContent className="p-0">
                                     { loading && 
@@ -132,7 +128,7 @@ const SpotifySearch = () => {
                                     {!loading && tracks.length > 0 && (
                                         <ul className="divide-y">
                                             {tracks.map(track => (
-                                                <li key={track.id} className="px-4 py-2 ease-in-out">
+                                                <li key={track.id} className="px-4 py-3 ease-in-out">
                                                     <button onClick={() => changePageMusic(track.id)} className="text-left">
                                                         {`${track.name} - ${track.artists[0].name}`}
                                                     </button>
