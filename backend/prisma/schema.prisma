@@ -20,6 +20,7 @@ model Pages {
   id      Int      @id @default(autoincrement())
   title   String
   imageId Int      @unique
+  musicId String?
   Events  Events[]
 
   users User[]
