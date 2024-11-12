@@ -28,7 +28,7 @@ const Home = () => {
                             <NewPage />
                         ) : (
                             <Button asChild>
-                                <Link to={"/register"}>Crie sua conta</Link>
+                                <Link to={"/register"} className="md:text-lg md:p-5 md:my-3">Crie sua conta</Link>
                             </Button>
                         )}
                     </div>
