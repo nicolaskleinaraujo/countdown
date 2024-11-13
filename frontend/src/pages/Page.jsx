@@ -55,7 +55,10 @@ const Page = () => {
                     <iframe 
                         src={`https://open.spotify.com/embed/track/${music}?theme=0`} 
                         onLoad={() => setMusicLoading(false)} 
-                        className={ musicLoading ? "hidden" : "block" && "h-20 mb-10 rounded-2xl shadow-xl shadow-bgcolor3"}
+                        className={ 
+                            musicLoading ? "hidden" : "block" && 
+                            "h-20 mb-10 mx-auto rounded-2xl shadow-xl shadow-bgcolor3 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl"
+                        }
                     ></iframe>
                 )}
 
