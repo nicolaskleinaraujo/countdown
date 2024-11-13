@@ -7,13 +7,23 @@ import 'react-toastify/dist/ReactToastify.css'
 import { Flip, ToastContainer } from 'react-toastify'
 
 function App() {
-  const { setUserId, setUserPages } = useContext(UserContext)
+  const { setUserId, setUserPages, setSpotifySync } = useContext(UserContext)
 
   const tryAuth = async() => {
-    const res = await dbFetch.post("/users/tryauth")
+    try {
+      const userAuth = await dbFetch.post("/users/tryauth")
 
-    setUserId(res.data.user.id)
-    setUserPages(res.data.user.pages)
+      setUserId(userAuth.data.user.id)
+      setUserPages(userAuth.data.user.pages)
+
+      await dbFetch.post("/spotify/refresh", {}, {
+        headers: { "userId": userAuth.data.user.id }
+      })
+
+      setSpotifySync(true)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   useEffect(() => {
