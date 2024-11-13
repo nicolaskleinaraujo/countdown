@@ -39,14 +39,10 @@ export const validateToken = async(req: Request, res: Response, next: NextFuncti
         return
     }
 
-    // Validating the access token
-    const accessToken: string = req.signedCookies.access
-    if (!accessToken) {
-        res.status(401).json({ msg: "Sessão expirada, faça o login novamente" })
-        return
-    }
-
     try {
+        // Validating the access token
+        const accessToken: string = req.signedCookies.access
+
         const accessJwt = jwt.verify(accessToken, process.env.JWT_SECRET as string) as jwtInfos
 
         if (accessJwt.id != Number(userId)) {
