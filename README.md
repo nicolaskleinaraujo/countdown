@@ -43,7 +43,7 @@
   ### Implantation
   - Website: https://countdown.nkportfolio.tech
   - API: https://countdown-api.nkportfolio.tech
-
+  
   # Author
    Nicolas Klein Faria de Araujo <br>
-   https://countdown.nkportfolio.tech
+   https://nkportfolio.tech
