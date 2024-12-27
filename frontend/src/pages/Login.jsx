@@ -91,41 +91,40 @@ const Login = () => {
                         )}
                     />
 
-                    
-                    <div className="relative">
-                        <FormField
-                            control={form.control}
-                            name="password"
-                            render={({ field }) => (
-                                <FormItem className="w-60 mb-7 text-textcolor sm:w-80 lg:w-96">
-                                    <FormLabel className="sm:text-lg lg:text-xl">Senha</FormLabel>
-                                    <FormControl>
+                    <FormField
+                        control={form.control}
+                        name="password"
+                        render={({ field }) => (
+                            <FormItem className="w-60 mb-7 text-textcolor sm:w-80 lg:w-96">
+                                <FormLabel className="sm:text-lg lg:text-xl">Senha</FormLabel>
+                                <FormControl>
+                                    <div className="relative">
                                         <Input 
                                             placeholder="Digite sua senha" 
                                             type={ showPassword ? "text" : "password" } 
                                             { ...field } 
                                             className="shadow-md shadow-bgcolor2"
                                         />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
 
-                        <Button 
-                            type="button" 
-                            onClick={() => setShowPassword(!showPassword)} 
-                            variant="link"
-                            size="icon"
-                            className="text-textcolor absolute bottom-0 right-0"
-                        >
-                            {showPassword ? (
-                                <EyeOff className="h-4 w-4" />
-                            ) : (
-                                <Eye className="w-4 h-4" />
-                            )}
-                        </Button>
-                    </div>
+                                        <Button 
+                                            type="button" 
+                                            onClick={() => setShowPassword(!showPassword)} 
+                                            variant="link"
+                                            size="icon"
+                                            className="text-textcolor absolute bottom-0 right-0"
+                                        >
+                                            {showPassword ? (
+                                                <EyeOff className="h-4 w-4" />
+                                            ) : (
+                                                <Eye className="w-4 h-4" />
+                                            )}
+                                        </Button>
+                                    </div>
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
 
                     <div className="flex justify-center mt-5">
                         {!loading ? (
